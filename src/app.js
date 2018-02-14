@@ -7,6 +7,19 @@ var template = (
         <p>MyFirstReactParagraph</p>
     </div>
 );
+var templatePersonalInfo = (
+    <div>
+        <h1>
+            DAVID
+        </h1>
+        <p>
+            AGE: 26
+        </p>
+        <p>
+            LOCATION: GER
+        </p>
+    </div>
+);
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templatePersonalInfo, appRoot);
