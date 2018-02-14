@@ -3,18 +3,22 @@
 console.log('App.js is running');
 
 //JSX - JavaScript XML
+var app = {
+    title: 'My first compiled react site',
+    subtitle: 'Personal info'
+};
 var template = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'MyFirstCompiledReact!'
+        app.title
     ),
     React.createElement(
-        'p',
+        'h2',
         null,
-        'MyFirstReactParagraph'
+        app.subtitle
     )
 );
 var user = {
@@ -46,4 +50,5 @@ var templatePersonalInfo = React.createElement(
 );
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templatePersonalInfo, appRoot);
+ReactDOM.render(template, appRoot);
+// ReactDOM.render(templatePersonalInfo, appRoot);
