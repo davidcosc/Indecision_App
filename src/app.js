@@ -3,12 +3,14 @@ console.log('App.js is running');
 //JSX - JavaScript XML
 var app = {
     title: 'My first compiled react site',
-    subtitle: 'Personal info'
+    subtitle: 'List',
+    options: ['Item One', 'Item Two']
 };
 var template = (
     <div>
         <h1>{app.title}</h1>
-        <h2>{app.subtitle}</h2>
+        {app.subtitle && <h2>{app.subtitle}</h2>}
+        {(app.options.length > 0) ? <p>Here are your options!</p> : <p>No options!</p>}
     </div>
 );
 
@@ -37,5 +39,5 @@ var templatePersonalInfo = (
 );
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templatePersonalInfo, appRoot);
+ReactDOM.render(template, appRoot);
 // ReactDOM.render(templatePersonalInfo, appRoot);
