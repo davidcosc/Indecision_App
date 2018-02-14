@@ -7,16 +7,21 @@ var template = (
         <p>MyFirstReactParagraph</p>
     </div>
 );
+var user = {
+    name: 'David',
+    age: 26,
+    location: 'Ger'
+};
 var templatePersonalInfo = (
     <div>
-        <h1>
-            DAVID
-        </h1>
         <p>
-            AGE: 26
+            NAME: {user.name.toUpperCase()}
         </p>
         <p>
-            LOCATION: GER
+            AGE: {user.age}
+        </p>
+        <p>
+            LOCATION: {user.location.toUpperCase()}
         </p>
     </div>
 );

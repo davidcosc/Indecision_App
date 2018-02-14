@@ -17,23 +17,31 @@ var template = React.createElement(
         'MyFirstReactParagraph'
     )
 );
+var user = {
+    name: 'David',
+    age: 26,
+    location: 'Ger'
+};
 var templatePersonalInfo = React.createElement(
     'div',
     null,
     React.createElement(
-        'h1',
+        'p',
         null,
-        'DAVID'
+        'NAME: ',
+        user.name.toUpperCase()
     ),
     React.createElement(
         'p',
         null,
-        'AGE: 26'
+        'AGE: ',
+        user.age
     ),
     React.createElement(
         'p',
         null,
-        'LOCATION: GER'
+        'LOCATION: ',
+        user.location.toUpperCase()
     )
 );
 var appRoot = document.getElementById('app');
