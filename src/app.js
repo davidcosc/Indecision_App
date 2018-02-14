@@ -12,17 +12,18 @@ var template = (
     </div>
 );
 
-function getLocation(location) {
-    if(location == null || location === "") {
-        return "UNKNOWN";
-    }
-    return location;
-}
+
 var user = {
     name: "David",
     age: 26,
-    location: ""
+    location: "Ger"
 };
+function getLocation(location) {
+    if(location == null || location === "") {
+        return undefined;
+    }
+    return <p>LOCATION: {user.location.toUpperCase()}</p>;
+}
 var templatePersonalInfo = (
     <div>
         <p>
@@ -31,9 +32,7 @@ var templatePersonalInfo = (
         <p>
             AGE: {user.age}
         </p>
-        <p>
-            LOCATION: {getLocation(user.location.toUpperCase())}
-        </p>
+        {getLocation(user.location.toUpperCase())}
     </div>
 );
 var appRoot = document.getElementById("app");

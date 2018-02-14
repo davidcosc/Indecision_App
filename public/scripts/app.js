@@ -22,17 +22,22 @@ var template = React.createElement(
     )
 );
 
-function getLocation(location) {
-    if (location == null || location === "") {
-        return "UNKNOWN";
-    }
-    return location;
-}
 var user = {
     name: "David",
     age: 26,
-    location: ""
+    location: "Ger"
 };
+function getLocation(location) {
+    if (location == null || location === "") {
+        return undefined;
+    }
+    return React.createElement(
+        "p",
+        null,
+        "LOCATION: ",
+        user.location.toUpperCase()
+    );
+}
 var templatePersonalInfo = React.createElement(
     "div",
     null,
@@ -48,12 +53,7 @@ var templatePersonalInfo = React.createElement(
         "AGE: ",
         user.age
     ),
-    React.createElement(
-        "p",
-        null,
-        "LOCATION: ",
-        getLocation(user.location.toUpperCase())
-    )
+    getLocation(user.location.toUpperCase())
 );
 var appRoot = document.getElementById("app");
 
