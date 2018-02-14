@@ -1,61 +1,61 @@
-"use strict";
+'use strict';
 
-console.log("App.js is running");
+console.log('App.js is running');
 
 //JSX - JavaScript XML
 var app = {
-    title: "My first compiled react site",
-    subtitle: "Personal info"
+    title: 'My first compiled react site',
+    subtitle: 'Personal info'
 };
 var template = React.createElement(
-    "div",
+    'div',
     null,
     React.createElement(
-        "h1",
+        'h1',
         null,
         app.title
     ),
     React.createElement(
-        "h2",
+        'h2',
         null,
         app.subtitle
     )
 );
 
 var user = {
-    name: "David",
+    name: 'David',
     age: 26,
-    location: "Ger"
+    location: 'Ger'
 };
 function getLocation(location) {
-    if (location == null || location === "") {
+    if (location == null || location === '') {
         return undefined;
     }
     return React.createElement(
-        "p",
+        'p',
         null,
-        "LOCATION: ",
-        user.location.toUpperCase()
+        'LOCATION: ',
+        location.toUpperCase()
     );
 }
 var templatePersonalInfo = React.createElement(
-    "div",
+    'div',
     null,
     React.createElement(
-        "p",
+        'p',
         null,
-        "NAME: ",
-        user.name.toUpperCase()
+        'NAME: ',
+        user.name ? user.name.toUpperCase() : 'ANONYMOUS'
     ),
     React.createElement(
-        "p",
+        'p',
         null,
-        "AGE: ",
+        'AGE: ',
         user.age
     ),
     getLocation(user.location.toUpperCase())
 );
-var appRoot = document.getElementById("app");
+var appRoot = document.getElementById('app');
 
 ReactDOM.render(templatePersonalInfo, appRoot);
 // ReactDOM.render(templatePersonalInfo, appRoot);

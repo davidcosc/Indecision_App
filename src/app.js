@@ -1,9 +1,9 @@
-console.log("App.js is running");
+console.log('App.js is running');
 
 //JSX - JavaScript XML
 var app = {
-    title: "My first compiled react site",
-    subtitle: "Personal info"
+    title: 'My first compiled react site',
+    subtitle: 'Personal info'
 };
 var template = (
     <div>
@@ -14,20 +14,20 @@ var template = (
 
 
 var user = {
-    name: "David",
+    name: 'David',
     age: 26,
-    location: "Ger"
+    location: 'Ger'
 };
 function getLocation(location) {
-    if(location == null || location === "") {
+    if(location == null || location === '') {
         return undefined;
     }
-    return <p>LOCATION: {user.location.toUpperCase()}</p>;
+    return <p>LOCATION: {location.toUpperCase()}</p>;
 }
 var templatePersonalInfo = (
     <div>
         <p>
-            NAME: {user.name.toUpperCase()}
+            NAME: {user.name ? user.name.toUpperCase() : 'ANONYMOUS'}
         </p>
         <p>
             AGE: {user.age}
@@ -35,7 +35,7 @@ var templatePersonalInfo = (
         {getLocation(user.location.toUpperCase())}
     </div>
 );
-var appRoot = document.getElementById("app");
+var appRoot = document.getElementById('app');
 
 ReactDOM.render(templatePersonalInfo, appRoot);
 // ReactDOM.render(templatePersonalInfo, appRoot);
