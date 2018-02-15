@@ -50,6 +50,12 @@ var count = 0;
 var addOne = function addOne() {
     console.log('addOne');
 };
+var subOne = function subOne() {
+    console.log('subOne');
+};
+var resetCounter = function resetCounter() {
+    console.log('resetCounter');
+};
 var templateCounter = React.createElement(
     'div',
     null,
@@ -61,8 +67,18 @@ var templateCounter = React.createElement(
     ),
     React.createElement(
         'button',
-        { id: 'count_btn', className: 'btn', onClick: addOne },
+        { id: 'count_plus_btn', className: 'btn', onClick: addOne },
         '+1'
+    ),
+    React.createElement(
+        'button',
+        { id: 'count_minus_btn', className: 'btn', onClick: subOne },
+        '-1'
+    ),
+    React.createElement(
+        'button',
+        { id: 'count_reset_btn', className: 'btn', onClick: resetCounter },
+        'reset'
     )
 );
 
