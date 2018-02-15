@@ -25,10 +25,13 @@ const template = (
 );
 
 let count = 0;
+const addOne = () => {
+    console.log('addOne');
+}
 const templateCounter = (
   <div>
     <h1>count: {count}</h1>
-    <button id="count_btn" className="btn">+1</button>
+    <button id="count_btn" className="btn" onClick={addOne}>+1</button>
   </div>
 );
 

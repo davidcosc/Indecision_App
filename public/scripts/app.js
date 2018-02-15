@@ -47,6 +47,9 @@ var template = React.createElement(
 );
 
 var count = 0;
+var addOne = function addOne() {
+    console.log('addOne');
+};
 var templateCounter = React.createElement(
     'div',
     null,
@@ -58,7 +61,7 @@ var templateCounter = React.createElement(
     ),
     React.createElement(
         'button',
-        { id: 'count_btn', className: 'btn' },
+        { id: 'count_btn', className: 'btn', onClick: addOne },
         '+1'
     )
 );
