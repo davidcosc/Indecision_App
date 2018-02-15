@@ -1,4 +1,5 @@
 console.log('App.js is running');
+const appRoot = document.getElementById('app');
 
 //es6 functions example challenge
 const multiplier = {
@@ -26,23 +27,30 @@ const template = (
 
 let count = 0;
 const addOne = () => {
+    count++;
+    renderCounterApp();
     console.log('addOne');
 };
 const subOne = () => {
+    count--;
+    renderCounterApp();
     console.log('subOne');
 };
 const resetCounter = () => {
+    count = 0;
+    renderCounterApp();
     console.log('resetCounter');
 };
-const templateCounter = (
-  <div>
-    <h1>count: {count}</h1>
-    <button id="count_plus_btn" className="btn" onClick={addOne}>+1</button>
-    <button id="count_minus_btn" className="btn" onClick={subOne}>-1</button>
-    <button id="count_reset_btn" className="btn" onClick={resetCounter}>reset</button>
-  </div>
-);
+const renderCounterApp = () => {
+    const templateCounter = (
+        <div>
+            <h1>count: {count}</h1>
+            <button id="count_plus_btn" className="btn" onClick={addOne}>+1</button>
+            <button id="count_minus_btn" className="btn" onClick={subOne}>-1</button>
+            <button id="count_reset_btn" className="btn" onClick={resetCounter}>reset</button>
+        </div>
+    );
+    ReactDOM.render(templateCounter, appRoot);
+};
 
-const appRoot = document.getElementById('app')
-ReactDOM.render(templateCounter, appRoot);
-
+renderCounterApp();

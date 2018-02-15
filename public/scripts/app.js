@@ -1,6 +1,7 @@
 'use strict';
 
 console.log('App.js is running');
+var appRoot = document.getElementById('app');
 
 //es6 functions example challenge
 var multiplier = {
@@ -48,39 +49,47 @@ var template = React.createElement(
 
 var count = 0;
 var addOne = function addOne() {
+    count++;
+    renderCounterApp();
     console.log('addOne');
 };
 var subOne = function subOne() {
+    count--;
+    renderCounterApp();
     console.log('subOne');
 };
 var resetCounter = function resetCounter() {
+    count = 0;
+    renderCounterApp();
     console.log('resetCounter');
 };
-var templateCounter = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
+var renderCounterApp = function renderCounterApp() {
+    var templateCounter = React.createElement(
+        'div',
         null,
-        'count: ',
-        count
-    ),
-    React.createElement(
-        'button',
-        { id: 'count_plus_btn', className: 'btn', onClick: addOne },
-        '+1'
-    ),
-    React.createElement(
-        'button',
-        { id: 'count_minus_btn', className: 'btn', onClick: subOne },
-        '-1'
-    ),
-    React.createElement(
-        'button',
-        { id: 'count_reset_btn', className: 'btn', onClick: resetCounter },
-        'reset'
-    )
-);
+        React.createElement(
+            'h1',
+            null,
+            'count: ',
+            count
+        ),
+        React.createElement(
+            'button',
+            { id: 'count_plus_btn', className: 'btn', onClick: addOne },
+            '+1'
+        ),
+        React.createElement(
+            'button',
+            { id: 'count_minus_btn', className: 'btn', onClick: subOne },
+            '-1'
+        ),
+        React.createElement(
+            'button',
+            { id: 'count_reset_btn', className: 'btn', onClick: resetCounter },
+            'reset'
+        )
+    );
+    ReactDOM.render(templateCounter, appRoot);
+};
 
-var appRoot = document.getElementById('app');
-ReactDOM.render(templateCounter, appRoot);
+renderCounterApp();
