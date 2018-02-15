@@ -2,6 +2,20 @@
 
 console.log('App.js is running');
 
+//es6 functions example challenge
+var multiplier = {
+    numbers: [1, 2, 3, 4],
+    multiplyBy: 2,
+    multiply: function multiply() {
+        var _this = this;
+
+        return this.numbers.map(function (number) {
+            return number * _this.multiplyBy;
+        });
+    }
+};
+console.log(multiplier.multiply());
+
 //JSX - JavaScript XML
 var app = {
     title: 'My first compiled react site',

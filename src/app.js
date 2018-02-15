@@ -1,5 +1,15 @@
 console.log('App.js is running');
 
+//es6 functions example challenge
+const multiplier = {
+    numbers: [1, 2, 3, 4],
+    multiplyBy: 2,
+    multiply() {
+        return this.numbers.map((number) => number * this.multiplyBy);
+    }
+};
+console.log(multiplier.multiply());
+
 //JSX - JavaScript XML
 const app = {
     title: 'My first compiled react site',
@@ -41,3 +51,4 @@ const appRoot = document.getElementById('app');
 
 ReactDOM.render(template, appRoot);
 // ReactDOM.render(templatePersonalInfo, appRoot);
+
