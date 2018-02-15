@@ -45,4 +45,23 @@ var template = React.createElement(
         'No options!'
     )
 );
-ReactDOM.render(template, appRoot);
+
+var count = 0;
+var templateCounter = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        'count: ',
+        count
+    ),
+    React.createElement(
+        'button',
+        { id: 'count_btn', className: 'btn' },
+        '+1'
+    )
+);
+
+var appRoot = document.getElementById('app');
+ReactDOM.render(templateCounter, appRoot);

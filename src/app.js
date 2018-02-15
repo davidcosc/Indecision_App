@@ -23,5 +23,15 @@ const template = (
         {(app.options.length > 0) ? <p>Here are your options!</p> : <p>No options!</p>}
     </div>
 );
-ReactDOM.render(template, appRoot);
+
+let count = 0;
+const templateCounter = (
+  <div>
+    <h1>count: {count}</h1>
+    <button id="count_btn" className="btn">+1</button>
+  </div>
+);
+
+const appRoot = document.getElementById('app')
+ReactDOM.render(templateCounter, appRoot);
 
