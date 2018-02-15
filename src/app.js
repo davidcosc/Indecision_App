@@ -23,32 +23,5 @@ const template = (
         {(app.options.length > 0) ? <p>Here are your options!</p> : <p>No options!</p>}
     </div>
 );
-
-
-const user = {
-    name: 'David',
-    age: 26,
-    location: 'Ger'
-};
-function getLocation(location) {
-    if(location == null || location === '') {
-        return undefined;
-    }
-    return <p>LOCATION: {location.toUpperCase()}</p>;
-}
-const templatePersonalInfo = (
-    <div>
-        <p>
-            NAME: {user.name ? user.name.toUpperCase() : 'ANONYMOUS'}
-        </p>
-        <p>
-            AGE: {user.age}
-        </p>
-        {getLocation(user.location.toUpperCase())}
-    </div>
-);
-const appRoot = document.getElementById('app');
-
 ReactDOM.render(template, appRoot);
-// ReactDOM.render(templatePersonalInfo, appRoot);
 

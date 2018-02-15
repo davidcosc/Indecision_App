@@ -45,41 +45,4 @@ var template = React.createElement(
         'No options!'
     )
 );
-
-var user = {
-    name: 'David',
-    age: 26,
-    location: 'Ger'
-};
-function getLocation(location) {
-    if (location == null || location === '') {
-        return undefined;
-    }
-    return React.createElement(
-        'p',
-        null,
-        'LOCATION: ',
-        location.toUpperCase()
-    );
-}
-var templatePersonalInfo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'p',
-        null,
-        'NAME: ',
-        user.name ? user.name.toUpperCase() : 'ANONYMOUS'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'AGE: ',
-        user.age
-    ),
-    getLocation(user.location.toUpperCase())
-);
-var appRoot = document.getElementById('app');
-
 ReactDOM.render(template, appRoot);
-// ReactDOM.render(templatePersonalInfo, appRoot);
