@@ -27,13 +27,13 @@ const template = (
 let count = 0;
 const addOne = () => {
     console.log('addOne');
-}
+};
 const subOne = () => {
     console.log('subOne');
-}
+};
 const resetCounter = () => {
     console.log('resetCounter');
-}
+};
 const templateCounter = (
   <div>
     <h1>count: {count}</h1>
