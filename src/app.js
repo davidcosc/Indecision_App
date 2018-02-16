@@ -55,6 +55,7 @@ const renderOptions = () => {
             {app.subtitle && <h2>{app.subtitle}</h2>}
             <p>{(app.options.length > 0) ? 'Here are your options!' : 'No options!'}</p>
             <p>Total options: {app.options.length}</p>
+            <button onClick={removeAllOptions}>Clear options</button>
             <form onSubmit={onOptionFormSubmit}>
                 <input type="text" name="option"/>
                 <button>Add option</button>
@@ -74,6 +75,13 @@ const onOptionFormSubmit = (e) => {
     e.target.elements.option.value = '';
     renderOptions();
     console.log('Option added. Total options = ' + app.options.length + '.');
+    return;
+}
+const removeAllOptions = () => {
+    app.options = [];
+    renderOptions();
+    console.log('All options removed.');
+    return;
 }
 
 renderOptions();

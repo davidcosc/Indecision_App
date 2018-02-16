@@ -76,6 +76,11 @@ var renderOptions = function renderOptions() {
             app.options.length
         ),
         React.createElement(
+            'button',
+            { onClick: removeAllOptions },
+            'Clear options'
+        ),
+        React.createElement(
             'form',
             { onSubmit: onOptionFormSubmit },
             React.createElement('input', { type: 'text', name: 'option' }),
@@ -99,6 +104,13 @@ var onOptionFormSubmit = function onOptionFormSubmit(e) {
     e.target.elements.option.value = '';
     renderOptions();
     console.log('Option added. Total options = ' + app.options.length + '.');
+    return;
+};
+var removeAllOptions = function removeAllOptions() {
+    app.options = [];
+    renderOptions();
+    console.log('All options removed.');
+    return;
 };
 
 renderOptions();
