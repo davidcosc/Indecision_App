@@ -48,16 +48,24 @@ const app = {
     subtitle: 'List',
     options: ['Item One', 'Item Two']
 };
-const onFormSubmit = (e) => {
+const onOptionFormSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted.');
+    const option = e.target.elements.option.value;
+    if(option == null || option === '') {
+        console.log('Type out option to be added.');
+        return;
+    }
+    app.options.push(option);
+    e.target.elements.option.value = '';
+    console.log('Option added. Total options = ' + app.options.length + '.');
 }
 const template = (
     <div>
         <h1>{app.title}</h1>
         {app.subtitle && <h2>{app.subtitle}</h2>}
         <p>{(app.options.length > 0) ? 'Here are your options!' : 'No options!'}</p>
-        <form onSubmit={onFormSubmit}>
+        <p>Total options: {app.options.length}</p>
+        <form onSubmit={onOptionFormSubmit}>
             <input type="text" name="option"/>
             <button>Add option</button>
         </form>

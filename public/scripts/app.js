@@ -50,9 +50,16 @@ var app = {
     subtitle: 'List',
     options: ['Item One', 'Item Two']
 };
-var onFormSubmit = function onFormSubmit(e) {
+var onOptionFormSubmit = function onOptionFormSubmit(e) {
     e.preventDefault();
-    console.log('Form submitted.');
+    var option = e.target.elements.option.value;
+    if (option == null || option === '') {
+        console.log('Type out option to be added.');
+        return;
+    }
+    app.options.push(option);
+    e.target.elements.option.value = '';
+    console.log('Option added. Total options = ' + app.options.length + '.');
 };
 var template = React.createElement(
     'div',
@@ -73,8 +80,14 @@ var template = React.createElement(
         app.options.length > 0 ? 'Here are your options!' : 'No options!'
     ),
     React.createElement(
+        'p',
+        null,
+        'Total options: ',
+        app.options.length
+    ),
+    React.createElement(
         'form',
-        { onSubmit: onFormSubmit },
+        { onSubmit: onOptionFormSubmit },
         React.createElement('input', { type: 'text', name: 'option' }),
         React.createElement(
             'button',
