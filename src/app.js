@@ -60,6 +60,13 @@ const renderOptions = () => {
                 <input type="text" name="option"/>
                 <button>Add option</button>
             </form>
+            <ol>
+                {
+                    app.options.map((option) => {
+                        return <li key={option}>{option}</li>;
+                    })
+                }
+            </ol>
         </div>
     );
     ReactDOM.render(template, appRoot);

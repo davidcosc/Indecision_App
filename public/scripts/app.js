@@ -89,6 +89,17 @@ var renderOptions = function renderOptions() {
                 null,
                 'Add option'
             )
+        ),
+        React.createElement(
+            'ol',
+            null,
+            app.options.map(function (option) {
+                return React.createElement(
+                    'li',
+                    { key: option },
+                    option
+                );
+            })
         )
     );
     ReactDOM.render(template, appRoot);
