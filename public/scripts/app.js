@@ -50,6 +50,44 @@ var app = {
     subtitle: 'List',
     options: ['Item One', 'Item Two']
 };
+var renderOptions = function renderOptions() {
+    var template = React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            app.title
+        ),
+        app.subtitle && React.createElement(
+            'h2',
+            null,
+            app.subtitle
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length > 0 ? 'Here are your options!' : 'No options!'
+        ),
+        React.createElement(
+            'p',
+            null,
+            'Total options: ',
+            app.options.length
+        ),
+        React.createElement(
+            'form',
+            { onSubmit: onOptionFormSubmit },
+            React.createElement('input', { type: 'text', name: 'option' }),
+            React.createElement(
+                'button',
+                null,
+                'Add option'
+            )
+        )
+    );
+    ReactDOM.render(template, appRoot);
+};
 var onOptionFormSubmit = function onOptionFormSubmit(e) {
     e.preventDefault();
     var option = e.target.elements.option.value;
@@ -59,42 +97,8 @@ var onOptionFormSubmit = function onOptionFormSubmit(e) {
     }
     app.options.push(option);
     e.target.elements.option.value = '';
+    renderOptions();
     console.log('Option added. Total options = ' + app.options.length + '.');
 };
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        app.title
-    ),
-    app.subtitle && React.createElement(
-        'h2',
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        'p',
-        null,
-        app.options.length > 0 ? 'Here are your options!' : 'No options!'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'Total options: ',
-        app.options.length
-    ),
-    React.createElement(
-        'form',
-        { onSubmit: onOptionFormSubmit },
-        React.createElement('input', { type: 'text', name: 'option' }),
-        React.createElement(
-            'button',
-            null,
-            'Add option'
-        )
-    )
-);
 
-ReactDOM.render(template, appRoot);
+renderOptions();

@@ -48,6 +48,21 @@ const app = {
     subtitle: 'List',
     options: ['Item One', 'Item Two']
 };
+const renderOptions = () => {
+    const template = (
+        <div>
+            <h1>{app.title}</h1>
+            {app.subtitle && <h2>{app.subtitle}</h2>}
+            <p>{(app.options.length > 0) ? 'Here are your options!' : 'No options!'}</p>
+            <p>Total options: {app.options.length}</p>
+            <form onSubmit={onOptionFormSubmit}>
+                <input type="text" name="option"/>
+                <button>Add option</button>
+            </form>
+        </div>
+    );
+    ReactDOM.render(template, appRoot);
+}
 const onOptionFormSubmit = (e) => {
     e.preventDefault();
     const option = e.target.elements.option.value;
@@ -57,20 +72,10 @@ const onOptionFormSubmit = (e) => {
     }
     app.options.push(option);
     e.target.elements.option.value = '';
+    renderOptions();
     console.log('Option added. Total options = ' + app.options.length + '.');
 }
-const template = (
-    <div>
-        <h1>{app.title}</h1>
-        {app.subtitle && <h2>{app.subtitle}</h2>}
-        <p>{(app.options.length > 0) ? 'Here are your options!' : 'No options!'}</p>
-        <p>Total options: {app.options.length}</p>
-        <form onSubmit={onOptionFormSubmit}>
-            <input type="text" name="option"/>
-            <button>Add option</button>
-        </form>
-    </div>
-);
 
-ReactDOM.render(template, appRoot);
+renderOptions();
+
 
