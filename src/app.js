@@ -1,15 +1,46 @@
-console.log('App.js is running');
+console.log('App.js is running.');
 const appRoot = document.getElementById('app');
 
 //es6 functions example challenge
-const multiplier = {
-    numbers: [1, 2, 3, 4],
-    multiplyBy: 2,
-    multiply() {
-        return this.numbers.map((number) => number * this.multiplyBy);
-    }
-};
-console.log(multiplier.multiply());
+// const multiplier = {
+//     numbers: [1, 2, 3, 4],
+//     multiplyBy: 2,
+//     multiply() {
+//         return this.numbers.map((number) => number * this.multiplyBy);
+//     }
+// };
+// console.log(multiplier.multiply());
+
+//counter example with custom render function
+// let count = 0;
+// const addOne = () => {
+//     count++;
+//     renderCounterApp();
+//     console.log('addOne');
+// };
+// const subOne = () => {
+//     count--;
+//     renderCounterApp();
+//     console.log('subOne');
+// };
+// const resetCounter = () => {
+//     count = 0;
+//     renderCounterApp();
+//     console.log('resetCounter');
+// };
+// const renderCounterApp = () => {
+//     const templateCounter = (
+//         <div>
+//             <h1>count: {count}</h1>
+//             <button id="count_plus_btn" className="btn" onClick={addOne}>+1</button>
+//             <button id="count_minus_btn" className="btn" onClick={subOne}>-1</button>
+//             <button id="count_reset_btn" className="btn" onClick={resetCounter}>reset</button>
+//         </div>
+//     );
+//     ReactDOM.render(templateCounter, appRoot);
+// };
+//
+// renderCounterApp();
 
 //JSX - JavaScript XML
 const app = {
@@ -17,40 +48,21 @@ const app = {
     subtitle: 'List',
     options: ['Item One', 'Item Two']
 };
+const onFormSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted.');
+}
 const template = (
     <div>
         <h1>{app.title}</h1>
         {app.subtitle && <h2>{app.subtitle}</h2>}
-        {(app.options.length > 0) ? <p>Here are your options!</p> : <p>No options!</p>}
+        <p>{(app.options.length > 0) ? 'Here are your options!' : 'No options!'}</p>
+        <form onSubmit={onFormSubmit}>
+            <input type="text" name="option"/>
+            <button>Add option</button>
+        </form>
     </div>
 );
 
-let count = 0;
-const addOne = () => {
-    count++;
-    renderCounterApp();
-    console.log('addOne');
-};
-const subOne = () => {
-    count--;
-    renderCounterApp();
-    console.log('subOne');
-};
-const resetCounter = () => {
-    count = 0;
-    renderCounterApp();
-    console.log('resetCounter');
-};
-const renderCounterApp = () => {
-    const templateCounter = (
-        <div>
-            <h1>count: {count}</h1>
-            <button id="count_plus_btn" className="btn" onClick={addOne}>+1</button>
-            <button id="count_minus_btn" className="btn" onClick={subOne}>-1</button>
-            <button id="count_reset_btn" className="btn" onClick={resetCounter}>reset</button>
-        </div>
-    );
-    ReactDOM.render(templateCounter, appRoot);
-};
+ReactDOM.render(template, appRoot);
 
-renderCounterApp();
