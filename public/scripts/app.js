@@ -103,7 +103,7 @@ var appRoot = document.getElementById('app');
 
 
 //visibility toggle app
-var visibilityStatus = 0;
+var visibilityStatus = false;
 var renderVisibilityApp = function renderVisibilityApp() {
     var visibilityTemplate = React.createElement(
         'div',
@@ -116,9 +116,9 @@ var renderVisibilityApp = function renderVisibilityApp() {
         React.createElement(
             'button',
             { onClick: statusToggle },
-            visibilityStatus === 0 ? 'show' : 'hide'
+            visibilityStatus ? 'show' : 'hide'
         ),
-        visibilityStatus === 1 && React.createElement(
+        !visibilityStatus && React.createElement(
             'p',
             null,
             'Hey this are some details u can see now'
@@ -128,12 +128,7 @@ var renderVisibilityApp = function renderVisibilityApp() {
 };
 var statusToggle = function statusToggle() {
     console.log('statusToggle' + visibilityStatus);
-    if (visibilityStatus === 0) {
-        visibilityStatus++;
-        renderVisibilityApp();
-        return;
-    }
-    visibilityStatus--;
+    visibilityStatus = !visibilityStatus;
     renderVisibilityApp();
 };
 
