@@ -48,6 +48,10 @@ const app = {
     subtitle: 'List',
     options: ['Item One', 'Item Two']
 };
+const randomOption = () => {
+    const randomNo = Math.floor(Math.random() * app.options.length);
+    alert(app.options[randomNo]);
+}
 const renderOptions = () => {
     const template = (
         <div>
@@ -60,6 +64,7 @@ const renderOptions = () => {
                 <input type="text" name="option"/>
                 <button>Add option</button>
             </form>
+            <button disabled={app.options.length === 0} onClick={randomOption}>Choose option</button>
             <ol>
                 {
                     app.options.map((option) => {

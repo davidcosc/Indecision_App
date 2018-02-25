@@ -50,6 +50,10 @@ var app = {
     subtitle: 'List',
     options: ['Item One', 'Item Two']
 };
+var randomOption = function randomOption() {
+    var randomNo = Math.floor(Math.random() * app.options.length);
+    alert(app.options[randomNo]);
+};
 var renderOptions = function renderOptions() {
     var template = React.createElement(
         'div',
@@ -89,6 +93,11 @@ var renderOptions = function renderOptions() {
                 null,
                 'Add option'
             )
+        ),
+        React.createElement(
+            'button',
+            { disabled: app.options.length === 0, onClick: randomOption },
+            'Choose option'
         ),
         React.createElement(
             'ol',
