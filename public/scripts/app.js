@@ -44,93 +44,59 @@ var appRoot = document.getElementById('app');
 //
 // renderCounterApp();
 
-//JSX - JavaScript XML
-var app = {
-    title: 'My first compiled react site',
-    subtitle: 'List',
-    options: ['Item One', 'Item Two']
-};
-var randomOption = function randomOption() {
-    var randomNo = Math.floor(Math.random() * app.options.length);
-    alert(app.options[randomNo]);
-};
-var renderOptions = function renderOptions() {
-    var template = React.createElement(
-        'div',
-        null,
-        React.createElement(
-            'h1',
-            null,
-            app.title
-        ),
-        app.subtitle && React.createElement(
-            'h2',
-            null,
-            app.subtitle
-        ),
-        React.createElement(
-            'p',
-            null,
-            app.options.length > 0 ? 'Here are your options!' : 'No options!'
-        ),
-        React.createElement(
-            'p',
-            null,
-            'Total options: ',
-            app.options.length
-        ),
-        React.createElement(
-            'button',
-            { onClick: removeAllOptions },
-            'Clear options'
-        ),
-        React.createElement(
-            'form',
-            { onSubmit: onOptionFormSubmit },
-            React.createElement('input', { type: 'text', name: 'option' }),
-            React.createElement(
-                'button',
-                null,
-                'Add option'
-            )
-        ),
-        React.createElement(
-            'button',
-            { disabled: app.options.length === 0, onClick: randomOption },
-            'Choose option'
-        ),
-        React.createElement(
-            'ol',
-            null,
-            app.options.map(function (option) {
-                return React.createElement(
-                    'li',
-                    { key: option },
-                    option
-                );
-            })
-        )
-    );
-    ReactDOM.render(template, appRoot);
-};
-var onOptionFormSubmit = function onOptionFormSubmit(e) {
-    e.preventDefault();
-    var option = e.target.elements.option.value;
-    if (option == null || option === '') {
-        console.log('Type out option to be added.');
-        return;
-    }
-    app.options.push(option);
-    e.target.elements.option.value = '';
-    renderOptions();
-    console.log('Option added. Total options = ' + app.options.length + '.');
-    return;
-};
-var removeAllOptions = function removeAllOptions() {
-    app.options = [];
-    renderOptions();
-    console.log('All options removed.');
-    return;
-};
 
-renderOptions();
+//JSX - JavaScript XML
+// const app = {
+//     title: 'My first compiled react site',
+//     subtitle: 'List',
+//     options: ['Item One', 'Item Two']
+// };
+// const randomOption = () => {
+//     const randomNo = Math.floor(Math.random() * app.options.length);
+//     alert(app.options[randomNo]);
+// }
+// const renderOptions = () => {
+//     const template = (
+//         <div>
+//             <h1>{app.title}</h1>
+//             {app.subtitle && <h2>{app.subtitle}</h2>}
+//             <p>{(app.options.length > 0) ? 'Here are your options!' : 'No options!'}</p>
+//             <p>Total options: {app.options.length}</p>
+//             <button onClick={removeAllOptions}>Clear options</button>
+//             <form onSubmit={onOptionFormSubmit}>
+//                 <input type="text" name="option"/>
+//                 <button>Add option</button>
+//             </form>
+//             <button disabled={app.options.length === 0} onClick={randomOption}>Choose option</button>
+//             <ol>
+//                 {
+//                     app.options.map((option) => {
+//                         return <li key={option}>{option}</li>;
+//                     })
+//                 }
+//             </ol>
+//         </div>
+//     );
+//     ReactDOM.render(template, appRoot);
+// }
+// const onOptionFormSubmit = (e) => {
+//     e.preventDefault();
+//     const option = e.target.elements.option.value;
+//     if(option == null || option === '') {
+//         console.log('Type out option to be added.');
+//         return;
+//     }
+//     app.options.push(option);
+//     e.target.elements.option.value = '';
+//     renderOptions();
+//     console.log('Option added. Total options = ' + app.options.length + '.');
+//     return;
+// }
+// const removeAllOptions = () => {
+//     app.options = [];
+//     renderOptions();
+//     console.log('All options removed.');
+//     return;
+// }
+//
+// renderOptions();
