@@ -50,60 +50,60 @@ const appRoot = document.getElementById('app');
 
 
 //JSX - JavaScript XML
-// const app = {
-//     title: 'My first compiled react site',
-//     subtitle: 'List',
-//     options: ['Item One', 'Item Two']
-// };
-// const randomOption = () => {
-//     const randomNo = Math.floor(Math.random() * app.options.length);
-//     alert(app.options[randomNo]);
-// }
-// const renderOptions = () => {
-//     const template = (
-//         <div>
-//             <h1>{app.title}</h1>
-//             {app.subtitle && <h2>{app.subtitle}</h2>}
-//             <p>{(app.options.length > 0) ? 'Here are your options!' : 'No options!'}</p>
-//             <p>Total options: {app.options.length}</p>
-//             <button onClick={removeAllOptions}>Clear options</button>
-//             <form onSubmit={onOptionFormSubmit}>
-//                 <input type="text" name="option"/>
-//                 <button>Add option</button>
-//             </form>
-//             <button disabled={app.options.length === 0} onClick={randomOption}>Choose option</button>
-//             <ol>
-//                 {
-//                     app.options.map((option) => {
-//                         return <li key={option}>{option}</li>;
-//                     })
-//                 }
-//             </ol>
-//         </div>
-//     );
-//     ReactDOM.render(template, appRoot);
-// }
-// const onOptionFormSubmit = (e) => {
-//     e.preventDefault();
-//     const option = e.target.elements.option.value;
-//     if(option == null || option === '') {
-//         console.log('Type out option to be added.');
-//         return;
-//     }
-//     app.options.push(option);
-//     e.target.elements.option.value = '';
-//     renderOptions();
-//     console.log('Option added. Total options = ' + app.options.length + '.');
-//     return;
-// }
-// const removeAllOptions = () => {
-//     app.options = [];
-//     renderOptions();
-//     console.log('All options removed.');
-//     return;
-// }
-//
-// renderOptions();
+const app = {
+    title: 'My first compiled react site',
+    subtitle: 'List',
+    options: ['Item One', 'Item Two']
+};
+const randomOption = () => {
+    const randomNo = Math.floor(Math.random() * app.options.length);
+    alert(app.options[randomNo]);
+}
+const renderOptions = () => {
+    const template = (
+        <div>
+            <h1>{app.title}</h1>
+            {app.subtitle && <h2>{app.subtitle}</h2>}
+            <p>{(app.options.length > 0) ? 'Here are your options!' : 'No options!'}</p>
+            <p>Total options: {app.options.length}</p>
+            <button onClick={removeAllOptions}>Clear options</button>
+            <form onSubmit={onOptionFormSubmit}>
+                <input type="text" name="option"/>
+                <button>Add option</button>
+            </form>
+            <button disabled={app.options.length === 0} onClick={randomOption}>Choose option</button>
+            <ol>
+                {
+                    app.options.map((option) => {
+                        return <li key={option}>{option}</li>;
+                    })
+                }
+            </ol>
+        </div>
+    );
+    ReactDOM.render(template, appRoot);
+}
+const onOptionFormSubmit = (e) => {
+    e.preventDefault();
+    const option = e.target.elements.option.value;
+    if(option == null || option === '') {
+        console.log('Type out option to be added.');
+        return;
+    }
+    app.options.push(option);
+    e.target.elements.option.value = '';
+    renderOptions();
+    console.log('Option added. Total options = ' + app.options.length + '.');
+    return;
+}
+const removeAllOptions = () => {
+    app.options = [];
+    renderOptions();
+    console.log('All options removed.');
+    return;
+}
+
+renderOptions();
 
 
 
@@ -111,21 +111,21 @@ const appRoot = document.getElementById('app');
 
 
 //visibility toggle app
-let visibilityStatus = false;
-const renderVisibilityApp = () => {
-    const visibilityTemplate = (
-        <div>
-            <h1>Visibility Toggle App</h1>
-            <button onClick={statusToggle}>{visibilityStatus ? 'show' : 'hide'}</button>
-            {(!visibilityStatus) && <p>Hey this are some details u can see now</p>}
-        </div>
-    );
-    ReactDOM.render(visibilityTemplate, appRoot);
-}
-const statusToggle = () => {
-    console.log('statusToggle' + visibilityStatus);
-    visibilityStatus = !visibilityStatus;
-    renderVisibilityApp();
-}
-
-renderVisibilityApp();
+// let visibilityStatus = false;
+// const renderVisibilityApp = () => {
+//     const visibilityTemplate = (
+//         <div>
+//             <h1>Visibility Toggle App</h1>
+//             <button onClick={statusToggle}>{visibilityStatus ? 'show' : 'hide'}</button>
+//             {(!visibilityStatus) && <p>Hey this are some details u can see now</p>}
+//         </div>
+//     );
+//     ReactDOM.render(visibilityTemplate, appRoot);
+// }
+// const statusToggle = () => {
+//     console.log('statusToggle' + visibilityStatus);
+//     visibilityStatus = !visibilityStatus;
+//     renderVisibilityApp();
+// }
+//
+// renderVisibilityApp();
