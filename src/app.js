@@ -106,3 +106,31 @@ const appRoot = document.getElementById('app');
 // renderOptions();
 
 
+
+
+
+
+//visibility toggle app
+let visibilityStatus = 0;
+const renderVisibilityApp = () => {
+    const visibilityTemplate = (
+        <div>
+            <h1>Visibility Toggle App</h1>
+            <button onClick={statusToggle}>{(visibilityStatus === 0) ? 'show' : 'hide'}</button>
+            {(visibilityStatus === 1) && <p>Hey this are some details u can see now</p>}
+        </div>
+    );
+    ReactDOM.render(visibilityTemplate, appRoot);
+}
+const statusToggle = () => {
+    console.log('statusToggle' + visibilityStatus);
+    if(visibilityStatus === 0) {
+        visibilityStatus++;
+        renderVisibilityApp();
+        return;
+    }
+    visibilityStatus--;
+    renderVisibilityApp();
+}
+
+renderVisibilityApp();

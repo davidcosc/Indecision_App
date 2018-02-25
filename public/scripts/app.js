@@ -100,3 +100,41 @@ var appRoot = document.getElementById('app');
 // }
 //
 // renderOptions();
+
+
+//visibility toggle app
+var visibilityStatus = 0;
+var renderVisibilityApp = function renderVisibilityApp() {
+    var visibilityTemplate = React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            'Visibility Toggle App'
+        ),
+        React.createElement(
+            'button',
+            { onClick: statusToggle },
+            visibilityStatus === 0 ? 'show' : 'hide'
+        ),
+        visibilityStatus === 1 && React.createElement(
+            'p',
+            null,
+            'Hey this are some details u can see now'
+        )
+    );
+    ReactDOM.render(visibilityTemplate, appRoot);
+};
+var statusToggle = function statusToggle() {
+    console.log('statusToggle' + visibilityStatus);
+    if (visibilityStatus === 0) {
+        visibilityStatus++;
+        renderVisibilityApp();
+        return;
+    }
+    visibilityStatus--;
+    renderVisibilityApp();
+};
+
+renderVisibilityApp();
