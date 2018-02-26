@@ -223,12 +223,45 @@ var Options = function (_React$Component3) {
     return Options;
 }(React.Component);
 
+var AddOption = function (_React$Component4) {
+    _inherits(AddOption, _React$Component4);
+
+    function AddOption() {
+        _classCallCheck(this, AddOption);
+
+        return _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).apply(this, arguments));
+    }
+
+    _createClass(AddOption, [{
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                null,
+                React.createElement(
+                    'form',
+                    null,
+                    React.createElement('input', { type: 'text', name: 'option' }),
+                    React.createElement(
+                        'button',
+                        null,
+                        'Add option.'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return AddOption;
+}(React.Component);
+
 var jsx = React.createElement(
     'div',
     null,
     React.createElement(Header, null),
     React.createElement(Action, null),
-    React.createElement(Options, null)
+    React.createElement(Options, null),
+    React.createElement(AddOption, null)
 );
 
 ReactDOM.render(jsx, appRoot);
