@@ -157,13 +157,22 @@ class Action extends React.Component {
     }
 }
 
+class Option extends React.Component {
+    render() {
+        return (
+            <div>
+                Option placeholder.
+            </div>
+        );
+    }
+}
+
 class Options extends React.Component {
     render() {
         return (
           <div>
-              <ol>
-                  <li>Options here</li>
-              </ol>
+              Options placeholder.
+              <Option/>
           </div>
         );
     }
@@ -173,10 +182,7 @@ class AddOption extends React.Component {
     render() {
         return (
           <div>
-              <form>
-                  <input type="text" name="option"/>
-                  <button>Add option.</button>
-              </form>
+              AddOption placeholder.
           </div>
         );
     }

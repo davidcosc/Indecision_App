@@ -192,8 +192,31 @@ var Action = function (_React$Component2) {
     return Action;
 }(React.Component);
 
-var Options = function (_React$Component3) {
-    _inherits(Options, _React$Component3);
+var Option = function (_React$Component3) {
+    _inherits(Option, _React$Component3);
+
+    function Option() {
+        _classCallCheck(this, Option);
+
+        return _possibleConstructorReturn(this, (Option.__proto__ || Object.getPrototypeOf(Option)).apply(this, arguments));
+    }
+
+    _createClass(Option, [{
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                null,
+                'Option placeholder.'
+            );
+        }
+    }]);
+
+    return Option;
+}(React.Component);
+
+var Options = function (_React$Component4) {
+    _inherits(Options, _React$Component4);
 
     function Options() {
         _classCallCheck(this, Options);
@@ -207,15 +230,8 @@ var Options = function (_React$Component3) {
             return React.createElement(
                 'div',
                 null,
-                React.createElement(
-                    'ol',
-                    null,
-                    React.createElement(
-                        'li',
-                        null,
-                        'Options here'
-                    )
-                )
+                'Options placeholder.',
+                React.createElement(Option, null)
             );
         }
     }]);
@@ -223,8 +239,8 @@ var Options = function (_React$Component3) {
     return Options;
 }(React.Component);
 
-var AddOption = function (_React$Component4) {
-    _inherits(AddOption, _React$Component4);
+var AddOption = function (_React$Component5) {
+    _inherits(AddOption, _React$Component5);
 
     function AddOption() {
         _classCallCheck(this, AddOption);
@@ -238,16 +254,7 @@ var AddOption = function (_React$Component4) {
             return React.createElement(
                 'div',
                 null,
-                React.createElement(
-                    'form',
-                    null,
-                    React.createElement('input', { type: 'text', name: 'option' }),
-                    React.createElement(
-                        'button',
-                        null,
-                        'Add option.'
-                    )
-                )
+                'AddOption placeholder.'
             );
         }
     }]);
@@ -255,8 +262,8 @@ var AddOption = function (_React$Component4) {
     return AddOption;
 }(React.Component);
 
-var IndecisionApp = function (_React$Component5) {
-    _inherits(IndecisionApp, _React$Component5);
+var IndecisionApp = function (_React$Component6) {
+    _inherits(IndecisionApp, _React$Component6);
 
     function IndecisionApp() {
         _classCallCheck(this, IndecisionApp);
