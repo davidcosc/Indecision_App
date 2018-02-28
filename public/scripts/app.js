@@ -175,6 +175,16 @@ var Action = function (_React$Component2) {
     }
 
     _createClass(Action, [{
+        key: 'pickOption',
+        value: function pickOption() {
+            alert('pickOption()');
+        }
+    }, {
+        key: 'clearOptions',
+        value: function clearOptions() {
+            alert('clearOptions()');
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -182,8 +192,13 @@ var Action = function (_React$Component2) {
                 null,
                 React.createElement(
                     'button',
-                    null,
+                    { onClick: this.pickOption },
                     'What should i do?'
+                ),
+                React.createElement(
+                    'button',
+                    { onClick: this.clearOptions },
+                    'Clear options.'
                 )
             );
         }

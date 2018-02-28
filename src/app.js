@@ -148,10 +148,17 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
+    pickOption() {
+        alert('pickOption()');
+    }
+    clearOptions() {
+        alert('clearOptions()');
+    }
     render() {
         return (
           <div>
-              <button>What should i do?</button>
+              <button onClick={this.pickOption}>What should i do?</button>
+              <button onClick={this.clearOptions}>Clear options.</button>
           </div>
         );
     }
