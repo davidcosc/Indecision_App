@@ -172,7 +172,7 @@ class Options extends React.Component {
         return (
           <div>
               Options placeholder.
-              <Option/>
+              {this.props.options.map((option) => <p key={option}>{option}</p>)}
           </div>
         );
     }
@@ -192,11 +192,12 @@ class IndecisionApp extends React.Component {
     render() {
         const title = 'Indecision App.';
         const subtitle = 'Put your life in the hands of a computer.';
+        const options = ['Option 1', 'Option 2', 'Option 3'];
         return (
           <div>
               <Header title={title} subtitle={subtitle}/>
               <Action/>
-              <Options/>
+              <Options options={options}/>
               <AddOption/>
           </div>
         );
