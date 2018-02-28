@@ -268,7 +268,8 @@ var AddOption = function (_React$Component5) {
         key: 'onSubmitOption',
         value: function onSubmitOption(e) {
             e.preventDefault();
-            if (e.target.elements.option.value === '' || e.target.elements.option.value === null) {
+            var option = e.target.elements.option.value.trim();
+            if (option === '' || option === null) {
                 return;
             }
             alert('onSubmitOption()');

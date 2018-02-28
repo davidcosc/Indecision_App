@@ -187,7 +187,8 @@ class Options extends React.Component {
 class AddOption extends React.Component {
     onSubmitOption(e) {
         e.preventDefault();
-        if(e.target.elements.option.value === '' || e.target.elements.option.value === null) {
+        const option = e.target.elements.option.value.trim();
+        if(option === '' || option === null) {
             return;
         }
         alert('onSubmitOption()');
