@@ -255,13 +255,30 @@ var AddOption = function (_React$Component4) {
     return AddOption;
 }(React.Component);
 
-var jsx = React.createElement(
-    'div',
-    null,
-    React.createElement(Header, null),
-    React.createElement(Action, null),
-    React.createElement(Options, null),
-    React.createElement(AddOption, null)
-);
+var IndecisionApp = function (_React$Component5) {
+    _inherits(IndecisionApp, _React$Component5);
 
-ReactDOM.render(jsx, appRoot);
+    function IndecisionApp() {
+        _classCallCheck(this, IndecisionApp);
+
+        return _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).apply(this, arguments));
+    }
+
+    _createClass(IndecisionApp, [{
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                null,
+                React.createElement(Header, null),
+                React.createElement(Action, null),
+                React.createElement(Options, null),
+                React.createElement(AddOption, null)
+            );
+        }
+    }]);
+
+    return IndecisionApp;
+}(React.Component);
+
+ReactDOM.render(React.createElement(IndecisionApp, null), appRoot);
