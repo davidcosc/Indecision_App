@@ -265,12 +265,27 @@ var AddOption = function (_React$Component5) {
     }
 
     _createClass(AddOption, [{
+        key: 'onSubmitOption',
+        value: function onSubmitOption(e) {
+            e.preventDefault();
+            alert('onSubmitOption()');
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
                 'div',
                 null,
-                'AddOption placeholder.'
+                React.createElement(
+                    'form',
+                    { onSubmit: this.onSubmitOption },
+                    React.createElement('input', { type: 'text', name: 'option' }),
+                    React.createElement(
+                        'button',
+                        null,
+                        'Add option.'
+                    )
+                )
             );
         }
     }]);

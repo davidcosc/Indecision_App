@@ -185,10 +185,17 @@ class Options extends React.Component {
 }
 
 class AddOption extends React.Component {
+    onSubmitOption(e) {
+        e.preventDefault();
+        alert('onSubmitOption()');
+    }
     render() {
         return (
           <div>
-              AddOption placeholder.
+              <form onSubmit={this.onSubmitOption}>
+                  <input type="text" name="option"/>
+                  <button>Add option.</button>
+              </form>
           </div>
         );
     }
