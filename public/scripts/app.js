@@ -357,6 +357,9 @@ var Counter = function (_React$Component7) {
     }, {
         key: 'minusOne',
         value: function minusOne() {
+            this.setState(function (prevState) {
+                return { count: prevState.count - 1 };
+            });
             console.log('minusOne() ' + this.state.count);
         }
     }, {

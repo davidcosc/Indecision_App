@@ -239,6 +239,9 @@ class Counter extends React.Component {
         console.log('plusOne() ' + this.state.count);
     }
     minusOne() {
+        this.setState((prevState) => {
+            return {count: prevState.count - 1};
+        });
         console.log('minusOne() ' + this.state.count);
     }
     resetCounter() {
