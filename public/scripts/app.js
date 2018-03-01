@@ -326,4 +326,49 @@ var IndecisionApp = function (_React$Component6) {
     return IndecisionApp;
 }(React.Component);
 
-ReactDOM.render(React.createElement(IndecisionApp, null), appRoot);
+//Counter example 02
+
+
+var Counter = function (_React$Component7) {
+    _inherits(Counter, _React$Component7);
+
+    function Counter() {
+        _classCallCheck(this, Counter);
+
+        return _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).apply(this, arguments));
+    }
+
+    _createClass(Counter, [{
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                null,
+                React.createElement(
+                    'h1',
+                    null,
+                    'Count: '
+                ),
+                React.createElement(
+                    'button',
+                    null,
+                    '+1'
+                ),
+                React.createElement(
+                    'button',
+                    null,
+                    '-1'
+                ),
+                React.createElement(
+                    'button',
+                    null,
+                    'reset'
+                )
+            );
+        }
+    }]);
+
+    return Counter;
+}(React.Component);
+
+ReactDOM.render(React.createElement(Counter, null), appRoot);
