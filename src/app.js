@@ -223,6 +223,12 @@ class IndecisionApp extends React.Component {
 
 //Counter example 02
 class Counter extends React.Component {
+    constructor(props) {
+        super(props);
+        this.plusOne = this.plusOne.bind(this);
+        this.minusOne = this.minusOne.bind(this);
+        this.resetCounter = this.resetCounter.bind(this);
+    }
     plusOne() {
         console.log('plusOne()');
     }

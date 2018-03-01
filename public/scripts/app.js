@@ -332,10 +332,15 @@ var IndecisionApp = function (_React$Component6) {
 var Counter = function (_React$Component7) {
     _inherits(Counter, _React$Component7);
 
-    function Counter() {
+    function Counter(props) {
         _classCallCheck(this, Counter);
 
-        return _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).apply(this, arguments));
+        var _this7 = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this, props));
+
+        _this7.plusOne = _this7.plusOne.bind(_this7);
+        _this7.minusOne = _this7.minusOne.bind(_this7);
+        _this7.resetCounter = _this7.resetCounter.bind(_this7);
+        return _this7;
     }
 
     _createClass(Counter, [{
