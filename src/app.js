@@ -1,31 +1,6 @@
 console.log('App.js is running.');
 const appRoot = document.getElementById('app');
 
-//visibility toggle app
-// let visibilityStatus = false;
-// const renderVisibilityApp = () => {
-//     const visibilityTemplate = (
-//         <div>
-//             <h1>Visibility Toggle App</h1>
-//             <button onClick={statusToggle}>{visibilityStatus ? 'show' : 'hide'}</button>
-//             {(!visibilityStatus) && <p>Hey this are some details u can see now</p>}
-//         </div>
-//     );
-//     ReactDOM.render(visibilityTemplate, appRoot);
-// }
-// const statusToggle = () => {
-//     console.log('statusToggle' + visibilityStatus);
-//     visibilityStatus = !visibilityStatus;
-//     renderVisibilityApp();
-// }
-//
-// renderVisibilityApp();
-
-
-
-
-
-
 //JSX REACT COMPONENTS
 class Header extends React.Component {
     render() {
@@ -97,20 +72,44 @@ class AddOption extends React.Component {
 }
 
 class IndecisionApp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: 'Indecision App.',
+            subtitle: 'Put your life in the hands of a computer.',
+            options: ['Option 1', 'Option 2', 'Option 3']
+        }
+    }
     render() {
-        const title = 'Indecision App.';
-        const subtitle = 'Put your life in the hands of a computer.';
-        const options = ['Option 1', 'Option 2', 'Option 3'];
         return (
           <div>
-              <Header title={title} subtitle={subtitle}/>
+              <Header title={this.state.title} subtitle={this.state.subtitle}/>
               <Action/>
-              <Options options={options}/>
+              <Options options={this.state.options}/>
               <AddOption/>
           </div>
         );
     }
 }
+
+ReactDOM.render(<IndecisionApp/>, appRoot);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Counter example 02
 class Counter extends React.Component {
@@ -176,5 +175,3 @@ class VisibilityToggle extends React.Component {
         );
     }
 }
-
-ReactDOM.render(<VisibilityToggle/>, appRoot);
