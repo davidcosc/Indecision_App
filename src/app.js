@@ -223,13 +223,22 @@ class IndecisionApp extends React.Component {
 
 //Counter example 02
 class Counter extends React.Component {
+    plusOne() {
+        console.log('plusOne()');
+    }
+    minusOne() {
+        console.log('minusOne()');
+    }
+    resetCounter() {
+        console.log('resetCounter()');
+    }
     render() {
         return (
             <div>
                 <h1>Count: </h1>
-                <button>+1</button>
-                <button>-1</button>
-                <button>reset</button>
+                <button onClick={this.plusOne}>+1</button>
+                <button onClick={this.minusOne}>-1</button>
+                <button onClick={this.resetCounter}>reset</button>
             </div>
         );
     }

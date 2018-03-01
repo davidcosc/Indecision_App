@@ -339,6 +339,21 @@ var Counter = function (_React$Component7) {
     }
 
     _createClass(Counter, [{
+        key: 'plusOne',
+        value: function plusOne() {
+            console.log('plusOne()');
+        }
+    }, {
+        key: 'minusOne',
+        value: function minusOne() {
+            console.log('minusOne()');
+        }
+    }, {
+        key: 'resetCounter',
+        value: function resetCounter() {
+            console.log('resetCounter()');
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -351,17 +366,17 @@ var Counter = function (_React$Component7) {
                 ),
                 React.createElement(
                     'button',
-                    null,
+                    { onClick: this.plusOne },
                     '+1'
                 ),
                 React.createElement(
                     'button',
-                    null,
+                    { onClick: this.minusOne },
                     '-1'
                 ),
                 React.createElement(
                     'button',
-                    null,
+                    { onClick: this.resetCounter },
                     'reset'
                 )
             );
