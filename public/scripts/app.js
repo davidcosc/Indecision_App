@@ -365,6 +365,9 @@ var Counter = function (_React$Component7) {
     }, {
         key: 'resetCounter',
         value: function resetCounter() {
+            this.setState(function () {
+                return { count: 0 };
+            });
             console.log('resetCounter() ' + this.state.count);
         }
     }, {
