@@ -340,23 +340,29 @@ var Counter = function (_React$Component7) {
         _this7.plusOne = _this7.plusOne.bind(_this7);
         _this7.minusOne = _this7.minusOne.bind(_this7);
         _this7.resetCounter = _this7.resetCounter.bind(_this7);
+        _this7.state = {
+            count: 0
+        };
         return _this7;
     }
 
     _createClass(Counter, [{
         key: 'plusOne',
         value: function plusOne() {
-            console.log('plusOne()');
+            this.setState(function (prevState) {
+                return { count: prevState.count + 1 };
+            });
+            console.log('plusOne() ' + this.state.count);
         }
     }, {
         key: 'minusOne',
         value: function minusOne() {
-            console.log('minusOne()');
+            console.log('minusOne() ' + this.state.count);
         }
     }, {
         key: 'resetCounter',
         value: function resetCounter() {
-            console.log('resetCounter()');
+            console.log('resetCounter() ' + this.state.count);
         }
     }, {
         key: 'render',
@@ -367,7 +373,8 @@ var Counter = function (_React$Component7) {
                 React.createElement(
                     'h1',
                     null,
-                    'Count: '
+                    'Count: ',
+                    this.state.count
                 ),
                 React.createElement(
                     'button',
