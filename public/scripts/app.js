@@ -55,11 +55,6 @@ var Action = function (_React$Component2) {
     }
 
     _createClass(Action, [{
-        key: 'pickOption',
-        value: function pickOption() {
-            alert('pickOption()');
-        }
-    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -67,7 +62,7 @@ var Action = function (_React$Component2) {
                 null,
                 React.createElement(
                     'button',
-                    { disabled: !this.props.hasOption, onClick: this.pickOption },
+                    { disabled: !this.props.hasOption, onClick: this.props.pickOption },
                     'What should i do?'
                 ),
                 React.createElement(
@@ -181,6 +176,7 @@ var IndecisionApp = function (_React$Component6) {
         var _this6 = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
         _this6.clearOptions = _this6.clearOptions.bind(_this6);
+        _this6.pickOption = _this6.pickOption.bind(_this6);
         _this6.state = {
             title: 'Indecision App.',
             subtitle: 'Put your life in the hands of a computer.',
@@ -190,6 +186,12 @@ var IndecisionApp = function (_React$Component6) {
     }
 
     _createClass(IndecisionApp, [{
+        key: 'pickOption',
+        value: function pickOption() {
+            var optionIndex = Math.floor(Math.random() * this.state.options.length);
+            alert(this.state.options[optionIndex]);
+        }
+    }, {
         key: 'clearOptions',
         value: function clearOptions() {
             this.setState(function () {
@@ -203,7 +205,7 @@ var IndecisionApp = function (_React$Component6) {
                 'div',
                 null,
                 React.createElement(Header, { title: this.state.title, subtitle: this.state.subtitle }),
-                React.createElement(Action, { hasOption: this.state.options.length > 0, clearOptions: this.clearOptions }),
+                React.createElement(Action, { hasOption: this.state.options.length > 0, pickOption: this.pickOption, clearOptions: this.clearOptions }),
                 React.createElement(Options, { options: this.state.options }),
                 React.createElement(AddOption, null)
             );

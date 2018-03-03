@@ -14,13 +14,10 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
-    pickOption() {
-        alert('pickOption()');
-    }
     render() {
         return (
           <div>
-              <button disabled={!this.props.hasOption} onClick={this.pickOption}>What should i do?</button>
+              <button disabled={!this.props.hasOption} onClick={this.props.pickOption}>What should i do?</button>
               <button onClick={this.props.clearOptions}>Clear options.</button>
           </div>
         );
@@ -72,11 +69,16 @@ class IndecisionApp extends React.Component {
     constructor(props) {
         super(props);
         this.clearOptions = this.clearOptions.bind(this);
+        this.pickOption = this.pickOption.bind(this);
         this.state = {
             title: 'Indecision App.',
             subtitle: 'Put your life in the hands of a computer.',
             options: ['Option 1', 'Option 2', 'Option 3']
         }
+    }
+    pickOption() {
+        const optionIndex = Math.floor(Math.random() * this.state.options.length);
+        alert(this.state.options[optionIndex]);
     }
     clearOptions() {
         this.setState(() => {
@@ -87,7 +89,7 @@ class IndecisionApp extends React.Component {
         return (
           <div>
               <Header title={this.state.title} subtitle={this.state.subtitle}/>
-              <Action hasOption={this.state.options.length > 0} clearOptions={this.clearOptions}/>
+              <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
               <Options options={this.state.options}/>
               <AddOption/>
           </div>
