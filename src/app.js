@@ -23,7 +23,7 @@ class Action extends React.Component {
     render() {
         return (
           <div>
-              <button onClick={this.pickOption}>What should i do?</button>
+              <button disabled={!this.props.hasOption} onClick={this.pickOption}>What should i do?</button>
               <button onClick={this.clearOptions}>Clear options.</button>
           </div>
         );
@@ -77,14 +77,14 @@ class IndecisionApp extends React.Component {
         this.state = {
             title: 'Indecision App.',
             subtitle: 'Put your life in the hands of a computer.',
-            options: ['Option 1', 'Option 2', 'Option 3']
+            options: []//['Option 1', 'Option 2', 'Option 3']
         }
     }
     render() {
         return (
           <div>
               <Header title={this.state.title} subtitle={this.state.subtitle}/>
-              <Action/>
+              <Action hasOption={this.state.options.length > 0}/>
               <Options options={this.state.options}/>
               <AddOption/>
           </div>

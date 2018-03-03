@@ -72,7 +72,7 @@ var Action = function (_React$Component2) {
                 null,
                 React.createElement(
                     'button',
-                    { onClick: this.pickOption },
+                    { disabled: !this.props.hasOption, onClick: this.pickOption },
                     'What should i do?'
                 ),
                 React.createElement(
@@ -188,7 +188,7 @@ var IndecisionApp = function (_React$Component6) {
         _this6.state = {
             title: 'Indecision App.',
             subtitle: 'Put your life in the hands of a computer.',
-            options: ['Option 1', 'Option 2', 'Option 3']
+            options: [] //['Option 1', 'Option 2', 'Option 3']
         };
         return _this6;
     }
@@ -200,7 +200,7 @@ var IndecisionApp = function (_React$Component6) {
                 'div',
                 null,
                 React.createElement(Header, { title: this.state.title, subtitle: this.state.subtitle }),
-                React.createElement(Action, null),
+                React.createElement(Action, { hasOption: this.state.options.length > 0 }),
                 React.createElement(Options, { options: this.state.options }),
                 React.createElement(AddOption, null)
             );
