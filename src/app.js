@@ -17,14 +17,11 @@ class Action extends React.Component {
     pickOption() {
         alert('pickOption()');
     }
-    clearOptions() {
-        alert('clearOptions()');
-    }
     render() {
         return (
           <div>
               <button disabled={!this.props.hasOption} onClick={this.pickOption}>What should i do?</button>
-              <button onClick={this.clearOptions}>Clear options.</button>
+              <button onClick={this.props.clearOptions}>Clear options.</button>
           </div>
         );
     }
@@ -74,17 +71,23 @@ class AddOption extends React.Component {
 class IndecisionApp extends React.Component {
     constructor(props) {
         super(props);
+        this.clearOptions = this.clearOptions.bind(this);
         this.state = {
             title: 'Indecision App.',
             subtitle: 'Put your life in the hands of a computer.',
-            options: []//['Option 1', 'Option 2', 'Option 3']
+            options: ['Option 1', 'Option 2', 'Option 3']
         }
+    }
+    clearOptions() {
+        this.setState(() => {
+            return {options: []};
+        });
     }
     render() {
         return (
           <div>
               <Header title={this.state.title} subtitle={this.state.subtitle}/>
-              <Action hasOption={this.state.options.length > 0}/>
+              <Action hasOption={this.state.options.length > 0} clearOptions={this.clearOptions}/>
               <Options options={this.state.options}/>
               <AddOption/>
           </div>

@@ -60,11 +60,6 @@ var Action = function (_React$Component2) {
             alert('pickOption()');
         }
     }, {
-        key: 'clearOptions',
-        value: function clearOptions() {
-            alert('clearOptions()');
-        }
-    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -77,7 +72,7 @@ var Action = function (_React$Component2) {
                 ),
                 React.createElement(
                     'button',
-                    { onClick: this.clearOptions },
+                    { onClick: this.props.clearOptions },
                     'Clear options.'
                 )
             );
@@ -185,22 +180,30 @@ var IndecisionApp = function (_React$Component6) {
 
         var _this6 = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
+        _this6.clearOptions = _this6.clearOptions.bind(_this6);
         _this6.state = {
             title: 'Indecision App.',
             subtitle: 'Put your life in the hands of a computer.',
-            options: [] //['Option 1', 'Option 2', 'Option 3']
+            options: ['Option 1', 'Option 2', 'Option 3']
         };
         return _this6;
     }
 
     _createClass(IndecisionApp, [{
+        key: 'clearOptions',
+        value: function clearOptions() {
+            this.setState(function () {
+                return { options: [] };
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
                 'div',
                 null,
                 React.createElement(Header, { title: this.state.title, subtitle: this.state.subtitle }),
-                React.createElement(Action, { hasOption: this.state.options.length > 0 }),
+                React.createElement(Action, { hasOption: this.state.options.length > 0, clearOptions: this.clearOptions }),
                 React.createElement(Options, { options: this.state.options }),
                 React.createElement(AddOption, null)
             );
