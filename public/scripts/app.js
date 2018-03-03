@@ -149,6 +149,7 @@ var AddOption = function (_React$Component5) {
             this.setState(function () {
                 return { error: error };
             });
+            e.target.elements.option.value = '';
         }
     }, {
         key: 'render',
@@ -156,14 +157,14 @@ var AddOption = function (_React$Component5) {
             return React.createElement(
                 'div',
                 null,
+                this.state.error && React.createElement(
+                    'p',
+                    null,
+                    this.state.error
+                ),
                 React.createElement(
                     'form',
                     { onSubmit: this.onSubmitOption },
-                    this.state.error && React.createElement(
-                        'p',
-                        null,
-                        this.state.error
-                    ),
                     React.createElement('input', { type: 'text', name: 'option' }),
                     React.createElement(
                         'button',
