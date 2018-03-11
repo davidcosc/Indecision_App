@@ -135,7 +135,7 @@ var IndecisionApp = function (_React$Component2) {
         _this2.state = {
             title: 'Indecision App.',
             subtitle: 'Put your life in the hands of a computer.',
-            options: ['Option 1', 'Option 2', 'Option 3']
+            options: _this2.props.options
         };
         return _this2;
     }
@@ -181,6 +181,10 @@ var IndecisionApp = function (_React$Component2) {
 
     return IndecisionApp;
 }(React.Component);
+
+IndecisionApp.defaultProps = {
+    options: []
+};
 
 ReactDOM.render(React.createElement(IndecisionApp, null), appRoot);
 

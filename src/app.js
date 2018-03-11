@@ -78,7 +78,7 @@ class IndecisionApp extends React.Component {
         this.state = {
             title: 'Indecision App.',
             subtitle: 'Put your life in the hands of a computer.',
-            options: ['Option 1', 'Option 2', 'Option 3']
+            options: this.props.options
         }
     }
     pickOption() {
@@ -111,6 +111,9 @@ class IndecisionApp extends React.Component {
         );
     }
 }
+IndecisionApp.defaultProps = {
+    options: []
+};
 
 ReactDOM.render(<IndecisionApp/>, appRoot);
 
