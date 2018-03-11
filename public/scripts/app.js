@@ -186,7 +186,7 @@ IndecisionApp.defaultProps = {
     options: []
 };
 
-ReactDOM.render(React.createElement(IndecisionApp, null), appRoot);
+ReactDOM.render(React.createElement(IndecisionApp, { options: ['1', '2'] }), appRoot);
 
 //Counter example 02
 
