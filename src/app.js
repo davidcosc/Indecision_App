@@ -2,46 +2,38 @@ console.log('App.js is running.');
 const appRoot = document.getElementById('app');
 
 //JSX REACT COMPONENTS
-class Header extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>{this.props.title}</h1>
-                <h2>{this.props.subtitle}</h2>
-            </div>
-        );
-    }
+const Header = (props) => {
+    return (
+        <div>
+            <h1>{props.title}</h1>
+            <h2>{props.subtitle}</h2>
+        </div>
+    );
 }
 
-class Action extends React.Component {
-    render() {
-        return (
-          <div>
-              <button disabled={!this.props.hasOption} onClick={this.props.pickOption}>What should i do?</button>
-              <button onClick={this.props.clearOptions}>Clear options.</button>
-          </div>
-        );
-    }
+const Action = (props) => {
+    return (
+        <div>
+            <button disabled={!props.hasOption} onClick={props.pickOption}>What should i do?</button>
+            <button onClick={props.clearOptions}>Clear options.</button>
+        </div>
+    );
 }
 
-class Option extends React.Component {
-    render() {
-        return (
-            <div>
-                {this.props.optionText}
-            </div>
-        );
-    }
+const Option = (props) => {
+    return (
+        <div>
+            {props.optionText}
+        </div>
+    );
 }
 
-class Options extends React.Component {
-    render() {
-        return (
-          <div>
-              {this.props.options.map((option) => <Option key={option} optionText={option}/>)}
-          </div>
-        );
-    }
+const Options = (props) => {
+    return (
+        <div>
+            {props.options.map((option) => <Option key={option} optionText={option}/>)}
+        </div>
+    );
 }
 
 class AddOption extends React.Component {
