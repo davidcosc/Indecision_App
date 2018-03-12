@@ -52,7 +52,14 @@ var Option = function Option(props) {
     return React.createElement(
         'div',
         null,
-        props.option
+        props.option,
+        React.createElement(
+            'button',
+            { onClick: function onClick(e) {
+                    return props.removeOption(props.option);
+                } },
+            'Remove.'
+        )
     );
 };
 
@@ -61,7 +68,7 @@ var Options = function Options(props) {
         'div',
         null,
         props.options.map(function (option) {
-            return React.createElement(Option, { key: option, option: option });
+            return React.createElement(Option, { key: option, option: option, removeOption: props.removeOption });
         })
     );
 };
@@ -131,6 +138,7 @@ var IndecisionApp = function (_React$Component2) {
 
         var _this2 = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
+        _this2.removeOption = _this2.removeOption.bind(_this2);
         _this2.addOption = _this2.addOption.bind(_this2);
         _this2.clearOptions = _this2.clearOptions.bind(_this2);
         _this2.pickOption = _this2.pickOption.bind(_this2);
@@ -141,6 +149,15 @@ var IndecisionApp = function (_React$Component2) {
     }
 
     _createClass(IndecisionApp, [{
+        key: 'removeOption',
+        value: function removeOption(optionToRemove) {
+            this.setState(function (prevState) {
+                return { options: prevState.options.filter(function (option) {
+                        return optionToRemove !== option;
+                    }) };
+            });
+        }
+    }, {
         key: 'addOption',
         value: function addOption(option) {
             if (!option) {
@@ -162,8 +179,8 @@ var IndecisionApp = function (_React$Component2) {
     }, {
         key: 'pickOption',
         value: function pickOption() {
-            var choice = Math.floor(Math.random() * this.state.options.length);
-            var option = this.state.options[choice];
+            var optionIndex = Math.floor(Math.random() * this.state.options.length);
+            var option = this.state.options[optionIndex];
             alert('Go with ' + option);
         }
     }, {
@@ -174,7 +191,7 @@ var IndecisionApp = function (_React$Component2) {
                 null,
                 React.createElement(Header, { title: 'Indecision App.', subtitle: 'Put your life in the hands of a computer.' }),
                 React.createElement(Action, { hasOption: this.state.options.length > 0, pickOption: this.pickOption, clearOptions: this.clearOptions }),
-                React.createElement(Options, { options: this.state.options }),
+                React.createElement(Options, { options: this.state.options, removeOption: this.removeOption }),
                 React.createElement(AddOption, { addOption: this.addOption })
             );
         }
@@ -188,117 +205,6 @@ IndecisionApp.defaultProps = {
 };
 
 ReactDOM.render(React.createElement(IndecisionApp, null), appRoot);
-
-//JSX REACT COMPONENTS
-// const Header = (props) => {
-//     return (
-//         <div>
-//             <h1>{props.title}</h1>
-//             {props.subtitle && <h2>{props.subtitle}</h2>}
-//         </div>
-//     );
-// }
-// Header.defaultProps = {
-//     title: 'Title'
-// };
-//
-// const Action = (props) => {
-//     return (
-//         <div>
-//             <button disabled={!props.hasOption} onClick={props.pickOption}>What should i do?</button>
-//             <button onClick={props.clearOptions}>Clear options.</button>
-//         </div>
-//     );
-// }
-//
-// const Option = (props) => {
-//     return (
-//         <div>
-//             {props.optionText}
-//         </div>
-//     );
-// }
-//
-// const Options = (props) => {
-//     return (
-//         <div>
-//             {props.options.map((option) => <Option key={option} optionText={option}/>)}
-//         </div>
-//     );
-// }
-//
-// class AddOption extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.onSubmitOption = this.onSubmitOption.bind(this);
-//         this.state =  {
-//             error: undefined
-//         }
-//     }
-//     onSubmitOption(e) {
-//         e.preventDefault();
-//         const option = e.target.elements.option.value.trim();
-//         const error = this.props.addOption(option);
-//         this.setState(() => ({error: error}));
-//         e.target.elements.option.value = '';
-//     }
-//     render() {
-//         return (
-//           <div>
-//               {this.state.error && <p>{this.state.error}</p>}
-//               <form onSubmit={this.onSubmitOption}>
-//                   <input type="text" name="option"/>
-//                   <button>Add option.</button>
-//               </form>
-//           </div>
-//         );
-//     }
-// }
-//
-// class IndecisionApp extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.clearOptions = this.clearOptions.bind(this);
-//         this.pickOption = this.pickOption.bind(this);
-//         this.addOption = this.addOption.bind(this);
-//         this.state = {
-//             title: 'Indecision App.',
-//             subtitle: 'Put your life in the hands of a computer.',
-//             options: this.props.options
-//         }
-//     }
-//     pickOption() {
-//         const optionIndex = Math.floor(Math.random() * this.state.options.length);
-//         alert(this.state.options[optionIndex]);
-//     }
-//     clearOptions() {
-//         this.setState(() => ({options: []}));
-//     }
-//     addOption(option) {
-//         if(!option) {
-//             return 'No valid option entered.';
-//         } else if(this.state.options.indexOf(option) > -1) {
-//             return 'Option already exists.';
-//         }
-//         this.setState((prevState) => ({options: prevState.options.concat(option)}));
-//     }
-//     render() {
-//         return (
-//           <div>
-//               <Header title={this.state.title} subtitle={this.state.subtitle}/>
-//               <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
-//               <Options options={this.state.options}/>
-//               <AddOption addOption={this.addOption}/>
-//           </div>
-//         );
-//     }
-// }
-// IndecisionApp.defaultProps = {
-//     options: []
-// };
-//
-// ReactDOM.render(<IndecisionApp options={[]}/>, appRoot);
-
 
 //Counter example 02
 

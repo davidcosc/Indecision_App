@@ -26,6 +26,7 @@ const Option = (props) => {
     return (
         <div>
             {props.option}
+            <button onClick={(e) => props.removeOption(props.option)}>Remove.</button>
         </div>
     );
 }
@@ -33,7 +34,7 @@ const Option = (props) => {
 const Options = (props) => {
     return (
         <div>
-            {props.options.map((option) => <Option key={option} option={option}/>)}
+            {props.options.map((option) => <Option key={option} option={option} removeOption={props.removeOption}/>)}
         </div>
     );
 }
@@ -72,12 +73,16 @@ class AddOption extends React.Component {
 class IndecisionApp extends React.Component {
     constructor(props) {
         super(props);
+        this.removeOption = this.removeOption.bind(this);
         this.addOption = this.addOption.bind(this);
         this.clearOptions = this.clearOptions.bind(this);
         this.pickOption = this.pickOption.bind(this);
         this.state = {
             options: this.props.options
         }
+    }
+    removeOption(optionToRemove) {
+        this.setState((prevState) => ({options: prevState.options.filter((option) => (optionToRemove !== option))}));
     }
     addOption(option) {
         if(!option) {
@@ -101,7 +106,7 @@ class IndecisionApp extends React.Component {
             <div>
                 <Header title="Indecision App." subtitle="Put your life in the hands of a computer."/>
                 <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
-                <Options options={this.state.options}/>
+                <Options options={this.state.options} removeOption={this.removeOption}/>
                 <AddOption addOption={this.addOption}/>
             </div>
         );
