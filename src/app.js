@@ -34,6 +34,7 @@ const Option = (props) => {
 const Options = (props) => {
     return (
         <div>
+            {(props.options.length === 0) && <p>Enter some options to get started.</p>}
             {props.options.map((option) => <Option key={option} option={option} removeOption={props.removeOption}/>)}
         </div>
     );
