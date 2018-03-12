@@ -41,14 +41,51 @@ Options.defaultProps = {
     options: ['d', 'e', 'f', 'a', 'u', 'l', 't']
 }
 
+class AddOption extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onOptionSubmit = this.onOptionSubmit.bind(this);
+        this.state = {
+            error: undefined
+        }
+    }
+    onOptionSubmit(e) {
+        e.preventDefault();
+        const option = e.target.elements.option.value.trim();
+        const error = this.props.addOption(option);
+        e.target.elements.option.value = '';
+        this.setState(() => ({error: error}));
+    }
+    render() {
+        return (
+            <div>
+                {this.state.error && <p>{this.state.error}</p>}
+                <form onSubmit={this.onOptionSubmit}>
+                    <input type="text" name="option"/>
+                    <button>Add option.</button>
+                </form>
+            </div>
+        );
+    }
+}
+
 class IndecisionApp extends React.Component {
     constructor(props) {
         super(props);
+        this.addOption = this.addOption.bind(this);
         this.clearOptions = this.clearOptions.bind(this);
         this.pickOption = this.pickOption.bind(this);
         this.state = {
             options: this.props.options
         }
+    }
+    addOption(option) {
+        if(!option) {
+            return 'U must enter an option to be added.';
+        } else if(this.state.options.indexOf(option) > -1) {
+            return 'Option already exists.'
+        }
+        this.setState((prevState) => ({options: prevState.options.concat(option)}));
     }
     clearOptions() {
         this.setState(() => ({options: []}));
@@ -65,6 +102,7 @@ class IndecisionApp extends React.Component {
                 <Header title="Indecision App." subtitle="Put your life in the hands of a computer."/>
                 <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
                 <Options options={this.state.options}/>
+                <AddOption addOption={this.addOption}/>
             </div>
         );
     }
