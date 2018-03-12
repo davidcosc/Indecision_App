@@ -148,7 +148,7 @@ var IndecisionApp = function (_React$Component2) {
         _this2.clearOptions = _this2.clearOptions.bind(_this2);
         _this2.pickOption = _this2.pickOption.bind(_this2);
         _this2.state = {
-            options: _this2.props.options
+            options: []
         };
         return _this2;
     }
@@ -228,10 +228,6 @@ var IndecisionApp = function (_React$Component2) {
 
     return IndecisionApp;
 }(React.Component);
-
-IndecisionApp.defaultProps = {
-    options: []
-};
 
 ReactDOM.render(React.createElement(IndecisionApp, null), appRoot);
 

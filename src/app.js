@@ -79,7 +79,7 @@ class IndecisionApp extends React.Component {
         this.clearOptions = this.clearOptions.bind(this);
         this.pickOption = this.pickOption.bind(this);
         this.state = {
-            options: this.props.options
+            options: []
         }
     }
     componentDidMount() {
@@ -130,9 +130,6 @@ class IndecisionApp extends React.Component {
             </div>
         );
     }
-}
-IndecisionApp.defaultProps = {
-    options: []
 }
 
 ReactDOM.render(<IndecisionApp/>, appRoot);
