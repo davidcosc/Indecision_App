@@ -33,12 +33,47 @@ const Option = (props) => {
 const Options = (props) => {
     return (
         <div>
-            {props.options.map((option) => <Option option={option} key={option}/>)}
+            {props.options.map((option) => <Option key={option} option={option}/>)}
         </div>
     );
 }
+Options.defaultProps = {
+    options: ['d', 'e', 'f', 'a', 'u', 'l', 't']
+}
 
-ReactDOM.render(<Options options={['1', '2', '3']}/>, appRoot);
+class IndecisionApp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.clearOptions = this.clearOptions.bind(this);
+        this.pickOption = this.pickOption.bind(this);
+        this.state = {
+            options: this.props.options
+        }
+    }
+    clearOptions() {
+        this.setState(() => ({options: []}));
+    }
+    pickOption() {
+        const choice = Math.floor(Math.random() * this.state.options.length);
+        const option = this.state.options[choice];
+        alert('Go with ' + option);
+    }
+
+    render() {
+        return (
+            <div>
+                <Header title="Indecision App." subtitle="Put your life in the hands of a computer."/>
+                <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
+                <Options options={this.state.options}/>
+            </div>
+        );
+    }
+}
+IndecisionApp.defaultProps = {
+    options: ['d', 'e', 'f', 'a', 'u', 'l', 't']
+}
+
+ReactDOM.render(<IndecisionApp/>, appRoot);
 
 //JSX REACT COMPONENTS
 // const Header = (props) => {
