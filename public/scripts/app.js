@@ -56,7 +56,17 @@ var Option = function Option(props) {
     );
 };
 
-ReactDOM.render(React.createElement(Option, { option: '1' }), appRoot);
+var Options = function Options(props) {
+    return React.createElement(
+        'div',
+        null,
+        props.options.map(function (option) {
+            return React.createElement(Option, { option: option, key: option });
+        })
+    );
+};
+
+ReactDOM.render(React.createElement(Options, { options: ['1', '2', '3'] }), appRoot);
 
 //JSX REACT COMPONENTS
 // const Header = (props) => {

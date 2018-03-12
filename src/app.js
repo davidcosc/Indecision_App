@@ -30,9 +30,15 @@ const Option = (props) => {
     );
 }
 
+const Options = (props) => {
+    return (
+        <div>
+            {props.options.map((option) => <Option option={option} key={option}/>)}
+        </div>
+    );
+}
 
-
-ReactDOM.render(<Option option="1"/>, appRoot);
+ReactDOM.render(<Options options={['1', '2', '3']}/>, appRoot);
 
 //JSX REACT COMPONENTS
 // const Header = (props) => {
