@@ -51,9 +51,7 @@ class AddOption extends React.Component {
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
         const error = this.props.addOption(option);
-        this.setState(() => {
-            return {error: error};
-        });
+        this.setState(() => ({error: error}));
         e.target.elements.option.value = '';
     }
     render() {
@@ -86,9 +84,7 @@ class IndecisionApp extends React.Component {
         alert(this.state.options[optionIndex]);
     }
     clearOptions() {
-        this.setState(() => {
-            return {options: []};
-        });
+        this.setState(() => ({options: []}));
     }
     addOption(option) {
         if(!option) {
@@ -96,9 +92,7 @@ class IndecisionApp extends React.Component {
         } else if(this.state.options.indexOf(option) > -1) {
             return 'Option already exists.';
         }
-        this.setState((prevState) => {
-            return {options: prevState.options.concat(option)};
-        });
+        this.setState((prevState) => ({options: prevState.options.concat(option)}));
     }
     render() {
         return (
@@ -115,7 +109,7 @@ IndecisionApp.defaultProps = {
     options: []
 };
 
-ReactDOM.render(<IndecisionApp options={['1', '2']}/>, appRoot);
+ReactDOM.render(<IndecisionApp options={[]}/>, appRoot);
 
 
 
