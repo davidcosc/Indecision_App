@@ -31,7 +31,24 @@ Header.defaultProps = {
     title: 'Title'
 };
 
-ReactDOM.render(React.createElement(Header, { subtitle: 'Subtitle' }), appRoot);
+var Action = function Action(props) {
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'button',
+            { disabled: !props.hasOption, onClick: props.pickOption },
+            'What should i do?'
+        ),
+        React.createElement(
+            'button',
+            { onClick: props.clearOptions },
+            'Clear options.'
+        )
+    );
+};
+
+ReactDOM.render(React.createElement(Action, null), appRoot);
 
 //JSX REACT COMPONENTS
 // const Header = (props) => {

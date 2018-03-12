@@ -13,7 +13,16 @@ Header.defaultProps = {
     title: 'Title'
 }
 
-ReactDOM.render(<Header subtitle="Subtitle"/>, appRoot);
+const Action = (props) => {
+    return (
+        <div>
+            <button disabled={!props.hasOption} onClick={props.pickOption}>What should i do?</button>
+            <button onClick={props.clearOptions}>Clear options.</button>
+        </div>
+    );
+}
+
+ReactDOM.render(<Action/>, appRoot);
 
 //JSX REACT COMPONENTS
 // const Header = (props) => {
