@@ -149,6 +149,30 @@ var IndecisionApp = function (_React$Component2) {
     }
 
     _createClass(IndecisionApp, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            try {
+                var json = localStorage.getItem('options');
+                var options = JSON.parse(json);
+                if (!options) {
+                    return;
+                }
+                this.setState(function () {
+                    return { options: options };
+                });
+            } catch (e) {
+                //do nothing
+            }
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            if (prevState.options.length !== this.state.options.length) {
+                var json = JSON.stringify(this.state.options);
+                localStorage.setItem('options', json);
+            }
+        }
+    }, {
         key: 'removeOption',
         value: function removeOption(optionToRemove) {
             this.setState(function (prevState) {
@@ -201,7 +225,7 @@ var IndecisionApp = function (_React$Component2) {
 }(React.Component);
 
 IndecisionApp.defaultProps = {
-    options: ['d', 'e', 'f', 'a', 'u', 'l', 't']
+    options: []
 };
 
 ReactDOM.render(React.createElement(IndecisionApp, null), appRoot);

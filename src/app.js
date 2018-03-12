@@ -81,6 +81,24 @@ class IndecisionApp extends React.Component {
             options: this.props.options
         }
     }
+    componentDidMount() {
+        try {
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json);
+            if(!options) {
+                return;
+            }
+            this.setState(() => ({options: options}));
+        } catch(e) {
+            //do nothing
+        }
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.options.length !== this.state.options.length) {
+            const json = JSON.stringify(this.state.options);
+            localStorage.setItem('options', json);
+        }
+    }
     removeOption(optionToRemove) {
         this.setState((prevState) => ({options: prevState.options.filter((option) => (optionToRemove !== option))}));
     }
@@ -113,7 +131,7 @@ class IndecisionApp extends React.Component {
     }
 }
 IndecisionApp.defaultProps = {
-    options: ['d', 'e', 'f', 'a', 'u', 'l', 't']
+    options: []
 }
 
 ReactDOM.render(<IndecisionApp/>, appRoot);
