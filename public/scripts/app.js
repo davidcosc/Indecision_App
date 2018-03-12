@@ -48,7 +48,15 @@ var Action = function Action(props) {
     );
 };
 
-ReactDOM.render(React.createElement(Action, null), appRoot);
+var Option = function Option(props) {
+    return React.createElement(
+        'div',
+        null,
+        props.option
+    );
+};
+
+ReactDOM.render(React.createElement(Option, { option: '1' }), appRoot);
 
 //JSX REACT COMPONENTS
 // const Header = (props) => {

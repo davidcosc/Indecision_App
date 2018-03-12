@@ -22,7 +22,17 @@ const Action = (props) => {
     );
 }
 
-ReactDOM.render(<Action/>, appRoot);
+const Option = (props) => {
+    return (
+        <div>
+            {props.option}
+        </div>
+    );
+}
+
+
+
+ReactDOM.render(<Option option="1"/>, appRoot);
 
 //JSX REACT COMPONENTS
 // const Header = (props) => {
