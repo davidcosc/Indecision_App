@@ -164,17 +164,21 @@ class IndecisionApp extends React.Component {
             options: props.options,
         }
         this.pickOption = this.pickOption.bind(this);
+        this.clearOptions = this.clearOptions.bind(this);
     }
     pickOption() {
         const optionIndex = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[optionIndex];
         alert('Pick option ' + option);
     }
+    clearOptions() {
+        this.setState(() => ({options: []}));
+    }
     render() {
         return (
             <div>
                 <Header/>
-                <Action hasOptions={(this.state.options.length > 0)} pickOption={this.pickOption}/>
+                <Action hasOptions={(this.state.options.length > 0)} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
             </div>
         );
     }

@@ -195,6 +195,7 @@ var IndecisionApp = function (_React$Component) {
             options: props.options
         };
         _this.pickOption = _this.pickOption.bind(_this);
+        _this.clearOptions = _this.clearOptions.bind(_this);
         return _this;
     }
 
@@ -206,13 +207,20 @@ var IndecisionApp = function (_React$Component) {
             alert('Pick option ' + option);
         }
     }, {
+        key: 'clearOptions',
+        value: function clearOptions() {
+            this.setState(function () {
+                return { options: [] };
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
                 'div',
                 null,
                 React.createElement(Header, null),
-                React.createElement(Action, { hasOptions: this.state.options.length > 0, pickOption: this.pickOption })
+                React.createElement(Action, { hasOptions: this.state.options.length > 0, pickOption: this.pickOption, clearOptions: this.clearOptions })
             );
         }
     }]);
