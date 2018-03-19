@@ -159,7 +159,18 @@ const Action = (props) => {
 Action.defaultProps = {
     hasOption: false,
 }
-ReactDOM.render(<Action/>, appRoot);
+
+class IndecisionApp extends React.Component {
+    render() {
+        return (
+            <div>
+                <Header/>
+                <Action/>
+            </div>
+        );
+    }
+}
+ReactDOM.render(<IndecisionApp/>, appRoot);
 
 
 
