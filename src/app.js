@@ -16,7 +16,7 @@ console.log('App.js is running.');
 // const Action = (props) => {
 //     return (
 //         <div>
-//             <button disabled={!props.hasOption} onClick={props.pickOption}>What should i do?</button>
+//             <button disabled={!props.hasOptions} onClick={props.pickOption}>What should i do?</button>
 //             <button onClick={props.clearOptions}>Clear options.</button>
 //         </div>
 //     );
@@ -124,7 +124,7 @@ console.log('App.js is running.');
 //         return (
 //             <div>
 //                 <Header title="Indecision App." subtitle="Put your life in the hands of a computer."/>
-//                 <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
+//                 <Action hasOptions={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
 //                 <Options options={this.state.options} removeOption={this.removeOption}/>
 //                 <AddOption addOption={this.addOption}/>
 //             </div>
@@ -151,24 +151,36 @@ Header.defaultProps = {
 const Action = (props) => {
     return (
         <div>
-            <button disabled={!props.hasOption} onClick={props.pickOption}>Pick option.</button>
-            <button disabled={!props.hasOption} onClick={props.clearOptions}>Clear options.</button>
+            <button disabled={!props.hasOptions} onClick={props.pickOption}>Pick option.</button>
+            <button disabled={!props.hasOptions} onClick={props.clearOptions}>Clear options.</button>
         </div>
     );
 }
-Action.defaultProps = {
-    hasOption: false,
-}
 
 class IndecisionApp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            options: props.options,
+        }
+        this.pickOption = this.pickOption.bind(this);
+    }
+    pickOption() {
+        const optionIndex = Math.floor(Math.random() * this.state.options.length);
+        const option = this.state.options[optionIndex];
+        alert('Pick option ' + option);
+    }
     render() {
         return (
             <div>
                 <Header/>
-                <Action/>
+                <Action hasOptions={(this.state.options.length > 0)} pickOption={this.pickOption}/>
             </div>
         );
     }
+}
+IndecisionApp.defaultProps = {
+        options: ['d', 'f', 'l', 't'],
 }
 ReactDOM.render(<IndecisionApp/>, appRoot);
 

@@ -26,7 +26,7 @@ console.log('App.js is running.');
 // const Action = (props) => {
 //     return (
 //         <div>
-//             <button disabled={!props.hasOption} onClick={props.pickOption}>What should i do?</button>
+//             <button disabled={!props.hasOptions} onClick={props.pickOption}>What should i do?</button>
 //             <button onClick={props.clearOptions}>Clear options.</button>
 //         </div>
 //     );
@@ -134,7 +134,7 @@ console.log('App.js is running.');
 //         return (
 //             <div>
 //                 <Header title="Indecision App." subtitle="Put your life in the hands of a computer."/>
-//                 <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
+//                 <Action hasOptions={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
 //                 <Options options={this.state.options} removeOption={this.removeOption}/>
 //                 <AddOption addOption={this.addOption}/>
 //             </div>
@@ -172,37 +172,47 @@ var Action = function Action(props) {
         null,
         React.createElement(
             'button',
-            { disabled: !props.hasOption, onClick: props.pickOption },
+            { disabled: !props.hasOptions, onClick: props.pickOption },
             'Pick option.'
         ),
         React.createElement(
             'button',
-            { disabled: !props.hasOption, onClick: props.clearOptions },
+            { disabled: !props.hasOptions, onClick: props.clearOptions },
             'Clear options.'
         )
     );
-};
-Action.defaultProps = {
-    hasOption: false
 };
 
 var IndecisionApp = function (_React$Component) {
     _inherits(IndecisionApp, _React$Component);
 
-    function IndecisionApp() {
+    function IndecisionApp(props) {
         _classCallCheck(this, IndecisionApp);
 
-        return _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
+
+        _this.state = {
+            options: props.options
+        };
+        _this.pickOption = _this.pickOption.bind(_this);
+        return _this;
     }
 
     _createClass(IndecisionApp, [{
+        key: 'pickOption',
+        value: function pickOption() {
+            var optionIndex = Math.floor(Math.random() * this.state.options.length);
+            var option = this.state.options[optionIndex];
+            alert('Pick option ' + option);
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
                 'div',
                 null,
                 React.createElement(Header, null),
-                React.createElement(Action, null)
+                React.createElement(Action, { hasOptions: this.state.options.length > 0, pickOption: this.pickOption })
             );
         }
     }]);
@@ -210,6 +220,9 @@ var IndecisionApp = function (_React$Component) {
     return IndecisionApp;
 }(React.Component);
 
+IndecisionApp.defaultProps = {
+    options: ['d', 'f', 'l', 't']
+};
 ReactDOM.render(React.createElement(IndecisionApp, null), appRoot);
 
 //Counter example 02
