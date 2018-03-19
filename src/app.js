@@ -160,12 +160,20 @@ const Action = (props) => {
 const Options = (props) => {
     return (
         <div>
-            {props.options.map((option) => <p key={option}>{option}</p>)}
+            {props.options.map((option) => <Option key={option} option={option}/>)}
         </div>
     );
 }
 Options.defaultProps = {
     options: ['d', 'f', 'l', 't'],
+}
+
+const Option = (props) => {
+    return (
+        <div>
+            {props.option}
+        </div>
+    );
 }
 
 class IndecisionApp extends React.Component {

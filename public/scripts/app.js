@@ -188,16 +188,20 @@ var Options = function Options(props) {
         'div',
         null,
         props.options.map(function (option) {
-            return React.createElement(
-                'p',
-                { key: option },
-                option
-            );
+            return React.createElement(Option, { key: option, option: option });
         })
     );
 };
 Options.defaultProps = {
     options: ['d', 'f', 'l', 't']
+};
+
+var Option = function Option(props) {
+    return React.createElement(
+        'div',
+        null,
+        props.option
+    );
 };
 
 var IndecisionApp = function (_React$Component) {
