@@ -183,6 +183,23 @@ var Action = function Action(props) {
     );
 };
 
+var Options = function Options(props) {
+    return React.createElement(
+        'div',
+        null,
+        props.options.map(function (option) {
+            return React.createElement(
+                'p',
+                { key: option },
+                option
+            );
+        })
+    );
+};
+Options.defaultProps = {
+    options: ['d', 'f', 'l', 't']
+};
+
 var IndecisionApp = function (_React$Component) {
     _inherits(IndecisionApp, _React$Component);
 
@@ -220,7 +237,8 @@ var IndecisionApp = function (_React$Component) {
                 'div',
                 null,
                 React.createElement(Header, null),
-                React.createElement(Action, { hasOptions: this.state.options.length > 0, pickOption: this.pickOption, clearOptions: this.clearOptions })
+                React.createElement(Action, { hasOptions: this.state.options.length > 0, pickOption: this.pickOption, clearOptions: this.clearOptions }),
+                React.createElement(Options, { options: this.state.options })
             );
         }
     }]);

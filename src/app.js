@@ -157,6 +157,17 @@ const Action = (props) => {
     );
 }
 
+const Options = (props) => {
+    return (
+        <div>
+            {props.options.map((option) => <p key={option}>{option}</p>)}
+        </div>
+    );
+}
+Options.defaultProps = {
+    options: ['d', 'f', 'l', 't'],
+}
+
 class IndecisionApp extends React.Component {
     constructor(props) {
         super(props);
@@ -172,13 +183,14 @@ class IndecisionApp extends React.Component {
         alert('Pick option ' + option);
     }
     clearOptions() {
-        this.setState(() => ({options: []}));
+        this.setState(() => ({options: [],}));
     }
     render() {
         return (
             <div>
                 <Header/>
                 <Action hasOptions={(this.state.options.length > 0)} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
+                <Options options={this.state.options}/>
             </div>
         );
     }
