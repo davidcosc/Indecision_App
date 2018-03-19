@@ -165,7 +165,27 @@ Header.defaultProps = {
     title: 'Indecision App v3.',
     subtitle: 'Put your life in the hands of a computer.'
 };
-ReactDOM.render(React.createElement(Header, null), appRoot);
+
+var Action = function Action(props) {
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'button',
+            { disabled: !props.hasOption, onClick: props.pickOption },
+            'Pick option.'
+        ),
+        React.createElement(
+            'button',
+            { disabled: !props.hasOption, onClick: props.clearOptions },
+            'Clear options.'
+        )
+    );
+};
+Action.defaultProps = {
+    hasOption: false
+};
+ReactDOM.render(React.createElement(Action, null), appRoot);
 
 //Counter example 02
 

@@ -147,7 +147,19 @@ Header.defaultProps = {
     title: 'Indecision App v3.',
     subtitle: 'Put your life in the hands of a computer.',
 }
-ReactDOM.render(<Header/>, appRoot);
+
+const Action = (props) => {
+    return (
+        <div>
+            <button disabled={!props.hasOption} onClick={props.pickOption}>Pick option.</button>
+            <button disabled={!props.hasOption} onClick={props.clearOptions}>Clear options.</button>
+        </div>
+    );
+}
+Action.defaultProps = {
+    hasOption: false,
+}
+ReactDOM.render(<Action/>, appRoot);
 
 
 
