@@ -219,21 +219,43 @@ var Option = function Option(props) {
 var AddOption = function (_React$Component) {
     _inherits(AddOption, _React$Component);
 
-    function AddOption() {
+    function AddOption(props) {
         _classCallCheck(this, AddOption);
 
-        return _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
+
+        _this.state = {
+            error: undefined
+        };
+        _this.handleOnSubmitOption = _this.handleOnSubmitOption.bind(_this);
+        return _this;
     }
 
     _createClass(AddOption, [{
+        key: 'handleOnSubmitOption',
+        value: function handleOnSubmitOption(e) {
+            e.preventDefault();
+            var option = e.target.elements.option.value.trim();
+            var error = this.props.addOption(option);
+            this.setState(function () {
+                return { error: error };
+            });
+            e.target.elements.option.value = '';
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
                 'div',
                 null,
+                this.state.error && React.createElement(
+                    'p',
+                    null,
+                    this.state.error
+                ),
                 React.createElement(
                     'form',
-                    null,
+                    { onSubmit: this.handleOnSubmitOption },
                     React.createElement('input', { type: 'text', name: 'option' }),
                     React.createElement(
                         'button',
@@ -262,6 +284,7 @@ var IndecisionApp = function (_React$Component2) {
         _this2.pickOption = _this2.pickOption.bind(_this2);
         _this2.clearOptions = _this2.clearOptions.bind(_this2);
         _this2.removeOption = _this2.removeOption.bind(_this2);
+        _this2.addOption = _this2.addOption.bind(_this2);
         return _this2;
     }
 
@@ -289,6 +312,18 @@ var IndecisionApp = function (_React$Component2) {
             });
         }
     }, {
+        key: 'addOption',
+        value: function addOption(option) {
+            if (!option) {
+                return 'Empty input is not an option!';
+            } else if (this.state.options.indexOf(option) > -1) {
+                return 'Option already exists!';
+            }
+            this.setState(function (prevState) {
+                return { options: prevState.options.concat(option) };
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -297,7 +332,7 @@ var IndecisionApp = function (_React$Component2) {
                 React.createElement(Header, null),
                 React.createElement(Action, { hasOptions: this.state.options.length > 0, pickOption: this.pickOption, clearOptions: this.clearOptions }),
                 React.createElement(Options, { options: this.state.options, removeOption: this.removeOption }),
-                React.createElement(AddOption, null)
+                React.createElement(AddOption, { addOption: this.addOption })
             );
         }
     }]);

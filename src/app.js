@@ -179,10 +179,25 @@ const Option = (props) => {
 }
 
 class AddOption extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            error: undefined,
+        }
+        this.handleOnSubmitOption = this.handleOnSubmitOption.bind(this);
+    }
+    handleOnSubmitOption(e) {
+        e.preventDefault();
+        const option = e.target.elements.option.value.trim();
+        const error = this.props.addOption(option);
+        this.setState(() => ({error: error}));
+        e.target.elements.option.value = '';
+    }
     render() {
         return (
             <div>
-                <form>
+                {this.state.error && <p>{this.state.error}</p>}
+                <form onSubmit={this.handleOnSubmitOption}>
                     <input type="text" name="option"/>
                     <button>Add option.</button>
                 </form>
@@ -200,6 +215,7 @@ class IndecisionApp extends React.Component {
         this.pickOption = this.pickOption.bind(this);
         this.clearOptions = this.clearOptions.bind(this);
         this.removeOption = this.removeOption.bind(this);
+        this.addOption = this.addOption.bind(this);
     }
     pickOption() {
         const optionIndex = Math.floor(Math.random() * this.state.options.length);
@@ -212,13 +228,21 @@ class IndecisionApp extends React.Component {
     removeOption(optionToRemove) {
         this.setState((prevState) => ({options: prevState.options.filter((option) => option !== optionToRemove)}));
     }
+    addOption(option) {
+        if(!option) {
+            return 'Empty input is not an option!';
+        } else if(this.state.options.indexOf(option) > -1) {
+            return 'Option already exists!';
+        }
+        this.setState((prevState) => ({options: prevState.options.concat(option)}));
+    }
     render() {
         return (
             <div>
                 <Header/>
                 <Action hasOptions={(this.state.options.length > 0)} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
                 <Options options={this.state.options} removeOption={this.removeOption}/>
-                <AddOption/>
+                <AddOption addOption={this.addOption}/>
             </div>
         );
     }
