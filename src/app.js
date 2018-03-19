@@ -161,7 +161,7 @@ const Options = (props) => {
     return (
         <div>
             {(props.options.length === 0 && <p>Enter some options to get started.</p>)}
-            {props.options.map((option) => <Option key={option} option={option}/>)}
+            {props.options.map((option) => <Option key={option} option={option} removeOption={props.removeOption}/>)}
         </div>
     );
 }
@@ -173,6 +173,7 @@ const Option = (props) => {
     return (
         <div>
             {props.option}
+            <button onClick={(e) => {props.removeOption(props.option)}}>Remove.</button>
         </div>
     );
 }
@@ -185,6 +186,7 @@ class IndecisionApp extends React.Component {
         }
         this.pickOption = this.pickOption.bind(this);
         this.clearOptions = this.clearOptions.bind(this);
+        this.removeOption = this.removeOption.bind(this);
     }
     pickOption() {
         const optionIndex = Math.floor(Math.random() * this.state.options.length);
@@ -194,12 +196,15 @@ class IndecisionApp extends React.Component {
     clearOptions() {
         this.setState(() => ({options: [],}));
     }
+    removeOption(optionToRemove) {
+        this.setState((prevState) => ({options: prevState.options.filter((option) => option !== optionToRemove)}));
+    }
     render() {
         return (
             <div>
                 <Header/>
                 <Action hasOptions={(this.state.options.length > 0)} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
-                <Options options={this.state.options}/>
+                <Options options={this.state.options} removeOption={this.removeOption}/>
             </div>
         );
     }

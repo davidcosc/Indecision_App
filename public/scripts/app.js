@@ -193,7 +193,7 @@ var Options = function Options(props) {
             'Enter some options to get started.'
         ),
         props.options.map(function (option) {
-            return React.createElement(Option, { key: option, option: option });
+            return React.createElement(Option, { key: option, option: option, removeOption: props.removeOption });
         })
     );
 };
@@ -205,7 +205,14 @@ var Option = function Option(props) {
     return React.createElement(
         'div',
         null,
-        props.option
+        props.option,
+        React.createElement(
+            'button',
+            { onClick: function onClick(e) {
+                    props.removeOption(props.option);
+                } },
+            'Remove.'
+        )
     );
 };
 
@@ -222,6 +229,7 @@ var IndecisionApp = function (_React$Component) {
         };
         _this.pickOption = _this.pickOption.bind(_this);
         _this.clearOptions = _this.clearOptions.bind(_this);
+        _this.removeOption = _this.removeOption.bind(_this);
         return _this;
     }
 
@@ -240,6 +248,15 @@ var IndecisionApp = function (_React$Component) {
             });
         }
     }, {
+        key: 'removeOption',
+        value: function removeOption(optionToRemove) {
+            this.setState(function (prevState) {
+                return { options: prevState.options.filter(function (option) {
+                        return option !== optionToRemove;
+                    }) };
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -247,7 +264,7 @@ var IndecisionApp = function (_React$Component) {
                 null,
                 React.createElement(Header, null),
                 React.createElement(Action, { hasOptions: this.state.options.length > 0, pickOption: this.pickOption, clearOptions: this.clearOptions }),
-                React.createElement(Options, { options: this.state.options })
+                React.createElement(Options, { options: this.state.options, removeOption: this.removeOption })
             );
         }
     }]);
