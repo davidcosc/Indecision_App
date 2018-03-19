@@ -64,7 +64,7 @@ var Options = function Options(props) {
     );
 };
 Options.defaultProps = {
-    options: ['d', 'f', 'l', 't']
+    options: []
 };
 
 var Option = function Option(props) {
@@ -155,6 +155,30 @@ var IndecisionApp = function (_React$Component2) {
     }
 
     _createClass(IndecisionApp, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            try {
+                var json = localStorage.getItem('options');
+                var options = JSON.parse(json);
+                if (!options) {
+                    return;
+                }
+                this.setState(function () {
+                    return { options: options };
+                });
+            } catch (e) {
+                //Do nothing
+            }
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            if (prevState.options.length !== this.state.options.length) {
+                var json = JSON.stringify(this.state.options);
+                localStorage.setItem('options', json);
+            }
+        }
+    }, {
         key: 'pickOption',
         value: function pickOption() {
             var optionIndex = Math.floor(Math.random() * this.state.options.length);
@@ -207,7 +231,7 @@ var IndecisionApp = function (_React$Component2) {
 }(React.Component);
 
 IndecisionApp.defaultProps = {
-    options: ['d', 'f', 'l', 't']
+    options: []
 };
 ReactDOM.render(React.createElement(IndecisionApp, null), appRoot);
 

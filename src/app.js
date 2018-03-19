@@ -32,7 +32,7 @@ const Options = (props) => {
     );
 }
 Options.defaultProps = {
-    options: ['d', 'f', 'l', 't'],
+    options: [],
 }
 
 const Option = (props) => {
@@ -83,6 +83,24 @@ class IndecisionApp extends React.Component {
         this.removeOption = this.removeOption.bind(this);
         this.addOption = this.addOption.bind(this);
     }
+    componentDidMount() {
+        try {
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json);
+            if(!options) {
+                return;
+            }
+            this.setState(() => ({options: options,}))
+        } catch(e) {
+            //Do nothing
+        }
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.options.length !== this.state.options.length) {
+            const json = JSON.stringify(this.state.options);
+            localStorage.setItem('options', json);
+        }
+    }
     pickOption() {
         const optionIndex = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[optionIndex];
@@ -114,7 +132,7 @@ class IndecisionApp extends React.Component {
     }
 }
 IndecisionApp.defaultProps = {
-        options: ['d', 'f', 'l', 't'],
+        options: [],
 }
 ReactDOM.render(<IndecisionApp/>, appRoot);
 
