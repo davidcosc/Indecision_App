@@ -178,6 +178,19 @@ const Option = (props) => {
     );
 }
 
+class AddOption extends React.Component {
+    render() {
+        return (
+            <div>
+                <form>
+                    <input type="text" name="option"/>
+                    <button>Add option.</button>
+                </form>
+            </div>
+        );
+    }
+}
+
 class IndecisionApp extends React.Component {
     constructor(props) {
         super(props);
@@ -205,6 +218,7 @@ class IndecisionApp extends React.Component {
                 <Header/>
                 <Action hasOptions={(this.state.options.length > 0)} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
                 <Options options={this.state.options} removeOption={this.removeOption}/>
+                <AddOption/>
             </div>
         );
     }
