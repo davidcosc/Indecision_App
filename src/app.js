@@ -1,4 +1,8 @@
-console.log('App.js is running.');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import validator from 'validator';
+
+console.log('Script app.js is running!');
 const appRoot = document.getElementById('app');
 
 const Header = (props) => {
