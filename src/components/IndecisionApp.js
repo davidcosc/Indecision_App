@@ -29,7 +29,7 @@ export default class IndecisionApp extends React.Component {
         }
         this.setState((prevState) => ({options: prevState.options.concat(option),}));
     };
-    closeOptionModal = () => {
+    clearSelectedOption = () => {
         this.setState(() => ({selectedOption: undefined,}));
     };
     componentDidMount() {
@@ -58,7 +58,7 @@ export default class IndecisionApp extends React.Component {
                 <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
                 <Options options={this.state.options} removeOption={this.removeOption}/>
                 <AddOption addOption={this.addOption}/>
-                <OptionModal selectedOption={this.state.selectedOption} closeOptionModal={this.closeOptionModal}/>
+                <OptionModal selectedOption={this.state.selectedOption} clearSelectedOption={this.clearSelectedOption}/>
             </div>
         );
     };
