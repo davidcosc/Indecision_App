@@ -13,7 +13,7 @@ export default class IndecisionApp extends React.Component {
     pickOption = () => {
         const optionIndex = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[optionIndex];
-        alert(`Go with option ${option}`);
+        this.setState(() => ({selectedOption: option,}));
     };
     clearOptions = () => {
         this.setState(() => ({options: [],}));
