@@ -3,10 +3,12 @@ import Header from './Header';
 import Action from './Action';
 import Options from './Options';
 import AddOption from './AddOption';
+import OptionModal from './OptionModal';
 
 export default class IndecisionApp extends React.Component {
     state = {
         options: ["1", "2"],
+        selectedOption: undefined,
     };
     pickOption = () => {
         const optionIndex = Math.floor(Math.random() * this.state.options.length);
@@ -53,6 +55,7 @@ export default class IndecisionApp extends React.Component {
                 <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
                 <Options options={this.state.options} removeOption={this.removeOption}/>
                 <AddOption addOption={this.addOption}/>
+                <OptionModal selectedOption={this.state.selectedOption}/>
             </div>
         );
     };
