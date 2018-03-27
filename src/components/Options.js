@@ -1,4 +1,17 @@
+import React from 'react';
 
+const Options = (props) => {
+    return (
+        <div>
+            {props.options.length === 0 && <p>Enter options to pick from.</p>}
+            {props.options.map((option) => <p key={option}>{option}</p>)}
+        </div>
+    );
+};
+Options.defaultProps = {
+    options: [],
+};
+export default Options;
 
 
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Action from './Action';
+import Options from './Options';
 
 export default class IndecisionApp extends React.Component {
     state = {
@@ -19,6 +20,7 @@ export default class IndecisionApp extends React.Component {
             <div>
                 <Header/>
                 <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
+                <Options options={this.state.options}/>
             </div>
         );
     }
