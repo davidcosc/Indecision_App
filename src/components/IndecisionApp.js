@@ -1,11 +1,16 @@
 import React from 'react';
 import Header from './Header';
+import Action from './Action';
 
 export default class IndecisionApp extends React.Component {
+    state = {
+        options: [],
+    };
     render() {
         return (
             <div>
                 <Header/>
+                <Action hasOption={this.state.options.length > 0}/>
             </div>
         );
     }
