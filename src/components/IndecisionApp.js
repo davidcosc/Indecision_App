@@ -11,11 +11,14 @@ export default class IndecisionApp extends React.Component {
         const option = this.state.options[optionIndex];
         alert(`Go with option ${option}`);
     };
+    clearOptions = () => {
+        this.setState(() => ({options: [],}));
+    };
     render() {
         return (
             <div>
                 <Header/>
-                <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption}/>
+                <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
             </div>
         );
     }
