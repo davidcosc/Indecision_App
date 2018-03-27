@@ -17,7 +17,15 @@ export default class IndecisionApp extends React.Component {
         this.setState(() => ({options: [],}));
     };
     removeOption = (optionToRemove) => {
-        this.setState((prevState) => ({options: prevState.options.filter((option) => optionToRemove !== option)}));
+        this.setState((prevState) => ({options: prevState.options.filter((option) => optionToRemove !== option),}));
+    };
+    addOption = (option) => {
+        if(!option) {
+            return 'Empty options not allowed!';
+        } else if(this.state.options.indexOf(option) > -1) {
+            return 'Duplicate options not allowed!';
+        }
+        this.setState((prevState) => ({options: prevState.options.concat(option),}));
     };
     render() {
         return (
@@ -25,7 +33,7 @@ export default class IndecisionApp extends React.Component {
                 <Header/>
                 <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
                 <Options options={this.state.options} removeOption={this.removeOption}/>
-                <AddOption/>
+                <AddOption addOption={this.addOption}/>
             </div>
         );
     };
