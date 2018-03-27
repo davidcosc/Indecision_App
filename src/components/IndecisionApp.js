@@ -15,12 +15,15 @@ export default class IndecisionApp extends React.Component {
     clearOptions = () => {
         this.setState(() => ({options: [],}));
     };
+    removeOption = (optionToRemove) => {
+        this.setState((prevState) => ({options: prevState.options.filter((option) => optionToRemove !== option)}));
+    };
     render() {
         return (
             <div>
                 <Header/>
                 <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
-                <Options options={this.state.options}/>
+                <Options options={this.state.options} removeOption={this.removeOption}/>
             </div>
         );
     }
