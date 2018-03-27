@@ -8,6 +8,9 @@ const Action = (props) => {
         </div>
     );
 };
+Action.defaultProps = {
+    hasOption: false,
+};
 export default Action;
 
 
