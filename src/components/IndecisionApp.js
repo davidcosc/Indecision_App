@@ -4,13 +4,18 @@ import Action from './Action';
 
 export default class IndecisionApp extends React.Component {
     state = {
-        options: [],
+        options: ["1", "2"],
+    };
+    pickOption = () => {
+        const optionIndex = Math.floor(Math.random() * this.state.options.length);
+        const option = this.state.options[optionIndex];
+        alert(`Go with option ${option}`);
     };
     render() {
         return (
             <div>
                 <Header/>
-                <Action hasOption={this.state.options.length > 0}/>
+                <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption}/>
             </div>
         );
     }
