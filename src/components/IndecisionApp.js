@@ -32,6 +32,15 @@ export default class IndecisionApp extends React.Component {
         }
         this.setState((prevState) => ({options: prevState.options.concat(option),}));
     };
+    componentDidMount() {
+        try {
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json);
+            this.state.options = options;
+        } catch(e) {
+            //do nothing
+        }
+    }
     render() {
         return (
             <div>
