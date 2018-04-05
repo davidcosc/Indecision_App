@@ -6,6 +6,9 @@ const Options = (props) => (
         {props.options.map((option) => <p key={option}>{option}</p>)}
     </div>
 );
+Options.defaultProps = {
+    options: [],
+};
 export default Options;
 
 
