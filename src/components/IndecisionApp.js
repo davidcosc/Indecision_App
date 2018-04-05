@@ -20,13 +20,16 @@ export default class IndecisionApp extends React.Component {
     clearSelectedOption = () => {
         this.setState(() => ({selectedOption: undefined,}));
     };
+    removeOption = (optionToRemove) => {
+        this.setState((prevState) => ({options: prevState.options.filter((option) => option !== optionToRemove)}));
+    };
     render() {
         return (
             <div>
                 <Header/>
                 <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
                 <OptionModal selectedOption={this.state.selectedOption} clearSelectedOption={this.clearSelectedOption}/>
-                <Options options={this.state.options}/>
+                <Options options={this.state.options} removeOption={this.removeOption}/>
             </div>
         );
     }
