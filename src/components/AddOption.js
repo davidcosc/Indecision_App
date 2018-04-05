@@ -7,7 +7,8 @@ export default class AddOption extends React.Component {
     handleOnSubmitOption = (e) => {
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
-        //const error = this.props.addOption(option);
+        const error = this.props.addOption(option);
+        this.setState(() => ({error: error}));
         e.target.elements.option.value = '';
     };
     render() {
