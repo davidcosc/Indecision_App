@@ -7,17 +7,18 @@ export default class IndecisionApp extends React.Component {
         options: ['1', '2'],
     };
     pickOption = () => {
-        this.setState(() => {
-            const optionIndex = Math.floor(Math.random() * this.state.options.length);
-            const option = this.state.options[optionIndex];
-            alert(option);
-        });
+        const optionIndex = Math.floor(Math.random() * this.state.options.length);
+        const option = this.state.options[optionIndex];
+        alert(option);
+    };
+    clearOptions = () => {
+        this.setState(() => ({options: [],}));
     };
     render() {
         return (
             <div>
                 <Header/>
-                <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption}/>
+                <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
             </div>
         );
     }
