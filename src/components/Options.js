@@ -1,9 +1,10 @@
 import React from 'react';
+import Option from './Option';
 
 const Options = (props) => (
     <div>
-        {props.options.length > 0 && <p>Enter some options to begin.</p>}
-        {props.options.map((option) => <p key={option}>{option}</p>)}
+        {props.options.length === 0 && <p>Enter some options to begin.</p>}
+        {props.options.map((option) => <Option key={option} option={option}/>)}
     </div>
 );
 export default Options;
