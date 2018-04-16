@@ -16,12 +16,15 @@ export default class IndecisionApp extends React.Component {
     clearOptions = () => {
         this.setState(() => ({options: [],}));
     };
+    closeSelectedOptionModal = () => {
+        this.setState(() => ({selectedOption: undefined,}));
+    };
     render() {
         return (
             <div>
                 <Header/>
                 <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
-                <OptionModal selectedOption={this.state.selectedOption}/>
+                <OptionModal selectedOption={this.state.selectedOption} closeSelectedOptionModal={this.closeSelectedOptionModal}/>
             </div>
         );
     }
