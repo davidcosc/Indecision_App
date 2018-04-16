@@ -6,9 +6,6 @@ const Action = (props) => (
         <button disabled={!props.hasOption} onClick={props.clearOptions}>Clear options.</button>
     </div>
 );
-Action.defaultProps = {
-    hasOption: false,
-};
 export default Action;
 
 

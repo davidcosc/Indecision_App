@@ -6,10 +6,6 @@ const Header = (props) => (
         {!!props.subtitle && <h2>{props.subtitle}</h2>}
     </div>
 );
-Header.defaultProps = {
-    title: 'IndecisionApp v6.',
-    subtitle: 'Put your life in the hands of a computer.',
-};
 export default Header;
 
 
