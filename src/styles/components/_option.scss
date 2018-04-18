@@ -1,0 +1,12 @@
+.option {
+  border-bottom: $s-border solid lighten($light_blue, 10%);
+  display: flex;
+  justify-content: space-between;
+  padding: $l-size $m-size;
+}
+.option__text {
+  color: white;
+  font-weight: $r-weight;
+  font-size: $ml-size;
+  margin: 0;
+}

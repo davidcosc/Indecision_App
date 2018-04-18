@@ -55,10 +55,14 @@ export default class IndecisionApp extends React.Component {
         return (
             <div>
                 <Header title="IndecisionApp v6." subtitle="Put your life in the hands of a computer."/>
-                <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption} clearOptions={this.clearOptions}/>
+                <div className="container">
+                    <Action hasOption={this.state.options.length > 0} pickOption={this.pickOption}/>
+                    <div className="widget">
+                        <Options hasOption={this.state.options.length > 0} options={this.state.options} removeOption={this.removeOption} clearOptions={this.clearOptions}/>
+                        <AddOption addOption={this.addOption}/>
+                    </div>
+                </div>
                 <OptionModal selectedOption={this.state.selectedOption} closeSelectedOptionModal={this.closeSelectedOptionModal}/>
-                <Options options={this.state.options} removeOption={this.removeOption}/>
-                <AddOption addOption={this.addOption}/>
             </div>
         );
     }
